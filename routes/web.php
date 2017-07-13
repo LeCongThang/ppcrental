@@ -23,6 +23,7 @@ Route::get('/ppcrental-residential.html','HomeController@Residential');
 Route::get('/ppcrental-commercial.html','HomeController@Commercial');
 Route::get('/ppcrental-sale.html','HomeController@Sale');
 Route::get('/ppcrental-search.html','HomeController@Search');
+Route::get('/for-agent.html','HomeController@ForAgent');
 //================== Admin routes ================================
 Route::get('/admin','Admin\AdminController@Home')->middleware('not.login');
 Route::get('/admin/log-in','Admin\AccountController@getLogin');

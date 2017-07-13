@@ -45,11 +45,16 @@
                 <li>
                     <a href="{{URL::asset('')}}ppcrental-sale.html">Sale</a>
                 </li>
-                <li>
-                    <a href="{{URL::asset('')}}ppcrental-search.html">Search</a>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Search</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{URL::asset('')}}ppcrental-search.html">District 1</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{URL::asset('')}}ppcrental-search.html">District 2</a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="#contact">For Agent</a>
+                    <a href="{{URL::asset('')}}for-agent.html">For Agent</a>
                 </li>
                 <li>
                     <a href="{{URL::asset('')}}about-ppcrental.html">About us</a>

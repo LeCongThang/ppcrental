@@ -3634,8 +3634,8 @@ tbody.collapse.in {
 }
 @media (min-width: 768px) {
   .navbar-right .dropdown-menu {
-    right: 0;
-    left: auto;
+    right: auto;
+    left: 0;
   }
   .navbar-right .dropdown-menu-left {
     right: auto;
@@ -4446,7 +4446,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav > li > .dropdown-menu {
-  margin-top: 0;
+  margin-top: 5px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }

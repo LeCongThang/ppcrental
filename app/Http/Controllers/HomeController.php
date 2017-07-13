@@ -40,4 +40,7 @@ class HomeController extends Controller
     public function Search(){
         return view('search');
     }
+    public function ForAgent(){
+        return view('agent');
+    }
 }

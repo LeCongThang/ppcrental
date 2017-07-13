@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
 }
 
@@ -31,119 +31,145 @@ h6 {
 }
 
 @media only screen and (min-width: 768px) {
-    .top-menu{
+    .top-menu {
         border-bottom: 1px solid black;
         padding: 20px;
     }
-    .top-menu li{
-        padding-right:20px ;
+
+    .top-menu li {
+        padding-right: 20px;
     }
-    .top-menu li a{
+
+    .top-menu li a {
         display: inline-block !important;
-        padding:0px;
+        padding: 0px;
     }
-    .bottom-menu{
+
+    .bottom-menu {
         padding-left: 20px;
     }
-    .bottom-menu li{
+
+    .bottom-menu li {
         padding-right: 10px;
+        padding-top: 5px;
     }
 }
 
-.mauxanh{
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+.mauxanh {
     color: #75D2F0 !important;
 }
-.tieude{
- padding-bottom: 10px;
+.tieude {
+    padding:5px 0 5px 0;
+    font-family:font76113 !important;
+    font-weight: normal;
+    text-align: center;
 }
 
 /*.intro-header {*/
-    /*padding-top: 50px; !* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! *!*/
-    /*padding-bottom: 50px;*/
-    /*text-align: center;*/
-    /*color: #f8f8f8;*/
-    /*background: url(../images/banner.jpg) no-repeat center center;*/
-    /*background-size: cover;*/
+/*padding-top: 50px; !* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! *!*/
+/*padding-bottom: 50px;*/
+/*text-align: center;*/
+/*color: #f8f8f8;*/
+/*background: url(../images/banner.jpg) no-repeat center center;*/
+/*background-size: cover;*/
 /*}*/
 
 /*.intro-message {*/
-    /*position: relative;*/
-    /*padding-top: 20%;*/
-    /*padding-bottom: 20%;*/
+/*position: relative;*/
+/*padding-top: 20%;*/
+/*padding-bottom: 20%;*/
 /*}*/
-.panel-custom{
+.panel-custom {
     border-radius: 10px;
     border: #F8F8F8;
-    -webkit-box-shadow: 5px 5px 30px 1px rgba(0,0,0,0.4);
-    -moz-box-shadow: 5px 5px 30px 1px rgba(0,0,0,0.4);
-    box-shadow: 5px 5px 30px 1px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 5px 5px 30px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 5px 5px 30px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 5px 30px 1px rgba(0, 0, 0, 0.4);
 }
-.modal-custom,.panel-custom .panel-heading{
+
+.modal-custom, .panel-custom .panel-heading {
     color: #ffffff;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    border:transparent;
+    border: transparent;
     background: #219DFE; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, #219DFE , #67DFCF); /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left, #219DFE, #67DFCF); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(right, #219DFE, #67DFCF); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(right, #219DFE, #67DFCF); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, #219DFE , #67DFCF);
+    background: linear-gradient(to right, #219DFE, #67DFCF);
 
 }
-.panel-body-custom{
-   padding: 50px;
+
+.panel-body-custom {
+    padding: 50px;
     text-align: justify;
 }
-.home-below-menu{
+
+.home-below-menu {
     padding-top: 110px;
     text-align: center;
     color: #ffffff;
-    border:transparent;
+    border: transparent;
     background: #219DFE; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, #219DFE , #67DFCF); /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left, #219DFE, #67DFCF); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(right, #219DFE, #67DFCF); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(right, #219DFE, #67DFCF); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, #219DFE , #67DFCF);
+    background: linear-gradient(to right, #219DFE, #67DFCF);
 }
-.home-below-menu h2{
 
-padding: 35px 0 40px 0;
+.home-below-menu h2 {
+
+    padding: 35px 0 40px 0;
 
 }
-.form-control{
+
+.form-control {
     width: 100% !important;
 }
-.form-group{
+
+.form-group {
     padding-bottom: 20px;
 }
-.search-form{
+
+.search-form {
     background-color: #09203F;
     color: white;
 }
-.search-form:hover{
+
+.search-form:hover {
     border-color: #09203F;
     background-color: white;
     color: #09203F;
 }
+
 .intro-message > h1 {
     margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
     font-size: 5em;
 }
-.district{
+
+.district {
     border-radius: 10px;
-    -webkit-box-shadow: 5px 5px 30px 1px rgba(0,0,0,0.4);
-    -moz-box-shadow: 5px 5px 30px 1px rgba(0,0,0,0.4);
-    box-shadow: 5px 5px 30px 1px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 5px 5px 30px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 5px 5px 30px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 5px 30px 1px rgba(0, 0, 0, 0.4);
 
 }
-.padding30{
+
+.padding30 {
     padding-bottom: 30px;
 }
-.news-div{
+
+.news-div {
     width: 33.33333%;
 }
-.news{
+
+.news {
     background-color: white;
     text-transform: capitalize;
     width: 50%;
@@ -157,6 +183,7 @@ padding: 35px 0 40px 0;
     padding-right: 5%;
     line-height: 2;
 }
+
 .news:after {
     left: 50%;
     top: 50%;
@@ -167,28 +194,30 @@ padding: 35px 0 40px 0;
     border-width: 15px;
     margin-right: -15px;
 }
-.news h5{
+
+.news h5 {
     color: #797979;
     font-size: 17px;
 }
-.image-news{
+
+.image-news {
     width: 50%;
     float: left;
     border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    ;
+    border-bottom-right-radius: 10px;;
 }
+
 .intro-divider {
     width: 400px;
     border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .intro-message > h3 {
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .intro-message {
         padding-bottom: 15%;
     }
@@ -243,16 +272,16 @@ padding: 35px 0 40px 0;
 .banner {
     padding: 50px 0;
     color: #f8f8f8;
-    background:  url(../images/news-bg_720.jpg) no-repeat center center,-webkit-linear-gradient(left, #219DFE , #67DFCF); /* For Safari 5.1 to 6.0 */
-    background:  url(../images/news-bg_720.jpg) no-repeat center center,-o-linear-gradient(right, #219DFE, #67DFCF); /* For Opera 11.1 to 12.0 */
-    background:  url(../images/news-bg_720.jpg) no-repeat center center,-moz-linear-gradient(right, #219DFE, #67DFCF); /* For Firefox 3.6 to 15 */
-    background:  linear-gradient(to right, #219DFE , #78CFC6),url(../images/news-bg_720.jpg);
+    background: url(../images/news-bg_720.jpg) no-repeat center center, -webkit-linear-gradient(left, #219DFE, #67DFCF); /* For Safari 5.1 to 6.0 */
+    background: url(../images/news-bg_720.jpg) no-repeat center center, -o-linear-gradient(right, #219DFE, #67DFCF); /* For Opera 11.1 to 12.0 */
+    background: url(../images/news-bg_720.jpg) no-repeat center center, -moz-linear-gradient(right, #219DFE, #67DFCF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #219DFE, #78CFC6), url(../images/news-bg_720.jpg);
     background-size: cover;
 }
 
 .banner h2 {
     margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
     font-size: 3em;
 }
 
@@ -265,17 +294,17 @@ padding: 35px 0 40px 0;
     margin-top: 0;
 }
 
-@media(max-width:1199px) {
+@media (max-width: 1199px) {
     ul.banner-social-buttons {
         float: left;
         margin-top: 15px;
     }
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .banner h2 {
         margin: 0;
-        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
         font-size: 3em;
     }
 
@@ -291,7 +320,7 @@ padding: 35px 0 40px 0;
 }
 
 footer {
-    padding: 50px 0;
+    /*padding: 50px 0;*/
     background-color: #ffffff;
 }
 
