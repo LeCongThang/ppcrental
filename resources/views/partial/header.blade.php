@@ -24,13 +24,16 @@
                 </li>
                 <li class="mauxanh">
                     <span class="glyphicon glyphicon-envelope"></span>
-                        info@perfectpropertyvn.com
+                    info@ppcrentals.com
                 </li>
+                <li><a href="{{URL::asset('')}}favorite-property.html"><span class="glyphicon glyphicon-heart"></span>
+                        Favorites</a></li>
                 <li>
                     <span class="glyphicon glyphicon-user"></span> <a class="signin" href="{{URL::asset('')}}sign-in.html">Sign in</a>/ <a class="signup" href="{{URL::asset('')}}sign-up.html">Sign up</a>
                 </li>
                 <li>
-                    Language: <span><a href=""><img src="{{URL::asset('')}}images/homepage/vn.gif"/></a> &nbsp;<a href=""> <img src="{{URL::asset('')}}images/homepage/us.gif"/></a></span>
+                    <span><a href=""><img src="{{URL::asset('')}}images/homepage/vn.gif"/></a> &nbsp;<a href=""> <img
+                                    src="{{URL::asset('')}}images/homepage/us.gif"/></a></span>
                 </li>
 
             </ul>

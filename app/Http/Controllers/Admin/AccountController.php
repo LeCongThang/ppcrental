@@ -7,8 +7,7 @@
  */
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\HbbUser;
-use DB;
+use App\Models\PpcUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -20,18 +19,23 @@ class AccountController extends Controller{
 
         $username = $request->get('username');
         $password=$request->get('password');
-        $user = HbbUser::where('username',$username)->first();
+        $user = PpcUser::where('username', $username)->first();
         //dd($user);
         if($user!=null){
             $pass = $user->password;
             if($password!=$pass){
 
-                return redirect('/admin/log-in')->with('fail','Username or password wrong!  ');
+                return redirect('/admin/log-in')->with('fail','Opps! Username or password wrong!  ');
             }
             else{
-                Session::put('username',$username);
+                if($user->status==1){
+                Session::put('username',$user->fullname);
                 Session::put('user_id',$user->id);
                 return redirect('/admin');
+                }
+                else{
+                    return redirect('/admin/log-in')->with('fail','Sorry, your account was blocked!  ');
+                }
             }
         }
         else{

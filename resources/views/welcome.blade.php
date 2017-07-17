@@ -41,21 +41,21 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('{{URL::asset('')}}images/homepage/banner.jpg');"></div>
+                <div class="fill" style="background-image:url('{{URL::asset('')}}images/slider/slider-1500013617.jpg');"></div>
                 {{--<div class="carousel-caption">--}}
                 {{--<h2>Caption 1</h2>--}}
                 {{--</div>--}}
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('{{URL::asset('')}}images/homepage/banner.jpg');"></div>
+                <div class="fill" style="background-image:url('{{URL::asset('')}}images/slider/slider-1500013617.jpg');"></div>
                 {{--<div class="carousel-caption">--}}
                 {{--<h2>Caption 2</h2>--}}
                 {{--</div>--}}
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('{{URL::asset('')}}images/homepage/banner.jpg');"></div>
+                <div class="fill" style="background-image:url('{{URL::asset('')}}images/slider/slider-1500013617.jpg');"></div>
                 {{--<div class="carousel-caption">--}}
                 {{--<h2>Caption 3</h2>--}}
                 {{--</div>--}}

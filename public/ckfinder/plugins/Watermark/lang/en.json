@@ -1,0 +1,17 @@
+{
+  "name": "Watermark",
+  "values": {
+    "watermark": "Watermark",
+    "title": "Add watermark to image - <em>%</em>",
+    "applyConfirm": "Are you sure you want to continue? This action will add watermark to image permanently.",
+    "confirm": "Are you sure you want to continue?",
+    "error": "Error",
+    "ok": "OK",
+    "unexpectedError": "[%] Unexpected error.",
+    "saveButtonText": "Save",
+    "saveAsNewButtonText": "Save as new file",
+    "backButtonText": "Back",
+    "choiceWatermark": "- Choice Watermark -",
+    "processingText": "Proccessing. Please wait."
+  }
+}

@@ -33,8 +33,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = '';
-$config['licenseKey']  = '';
+$config['licenseName'] = 'PPC Rental';
+$config['licenseKey'] = '3FUF5M7F26U953QE2QR3HDAWKD8MG';
 
 /*============================ CKFinder Internal Directory ============================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_privateDir
@@ -70,7 +70,7 @@ if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/image
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => '/images/',
+    'baseUrl' => 'http://' . $_SERVER['SERVER_NAME'] . ':81/www/ppcrental/public/',
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
@@ -148,6 +148,7 @@ $config['debug'] = false;
 
 $config['pluginsDirectory'] = __DIR__ . '/plugins';
 $config['plugins'] = array();
+$config['plugins'][] = 'Watermark';
 
 /*================================ Cache settings =====================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_cache

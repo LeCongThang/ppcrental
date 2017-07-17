@@ -15,6 +15,7 @@
     <link href="{{URL::asset('')}}css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{URL::asset('')}}css/nprogress.css" rel="stylesheet">
+    <link rel="icon" href="{{URL::asset('favicon.ico')}}">
 {{--<!-- iCheck -->--}}
 {{--<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">--}}
 

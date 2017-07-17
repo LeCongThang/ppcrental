@@ -18,7 +18,7 @@
         </div>
         <!-- /menu profile quick info -->
 
-        <br />
+        <br/>
 
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -33,33 +33,37 @@
                         </ul>
                     </li>
 
-                    <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-table"></i> Properties <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="tables.html">Tables</a></li>
-                            <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                            <li><a href="{{URL::asset('')}}admin/new-property">Add new property</a></li>
+                            <li><a href="{{URL::asset('')}}admin/property-management">List properties</a></li>
+                            <li><a href="{{URL::asset('')}}admin/status-feature-property">Status and Feature</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{URL::asset('')}}admin/1-menu-management"><i class="fa fa-bug"></i> Menu management</a>
+                    {{--<li><a href="{{URL::asset('')}}admin/menu-management"><i class="fa fa-bug"></i> Menu management</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="{{URL::asset('')}}admin/slider-management"><i class="fa fa-bug"></i> Sliders management</a>--}}
+                    {{--</li>--}}
+                    <li><a><i class="fa fa-bug"></i> News management
+                            <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{URL::asset('')}}admin/create-news">Add news</a></li>
+                            <li><a href="{{URL::asset('')}}admin/news-management">List of news</a></li>
+                        </ul>
                     </li>
-                    <li><a href="{{URL::asset('')}}admin/1-menu-management"><i class="fa fa-bug"></i> Send mail example</a>
-                    </li>
-                    <li><a href="{{URL::asset('')}}admin/resize-image"><i class="fa fa-bug"></i> Resize image example</a>
-                    </li>
+                    {{--<li><a href="{{URL::asset('')}}admin/about-management"><i class="fa fa-bug"></i>About management</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="{{URL::asset('')}}admin/contact-management"><i class="fa fa-bug"></i> Contact--}}
+                            {{--management</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="{{URL::asset('')}}admin/agent-management"><i class="fa fa-bug"></i> Agent--}}
+                            {{--management</a>--}}
+                    {{--</li>--}}
                 </ul>
             </div>
             <div class="menu_section">
                 <h3>System config</h3>
-                <ul class="nav side-menu">
-                    <li><a href="{{URL::asset('')}}admin/system-config"><i class="fa fa-bug"></i> System information</a>
-                    </li>
-                    <li><a href="{{URL::asset('')}}admin/system-language"><i class="fa fa-windows"></i> System language</a>
-
-                    </li>
-                    <li><a href="{{URL::asset('')}}admin/system-permission"><i class="fa fa-sitemap"></i> System permission</a>
-
-                    </li>
-                    <li><a href="{{URL::asset('')}}/admin/theme"><i class="fa fa-laptop"></i> System theme</a></li>
-                </ul>
+                {!! \App\Http\Controllers\Admin\BaseController::Index() !!}
             </div>
 
         </div>
