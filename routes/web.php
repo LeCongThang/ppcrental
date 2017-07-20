@@ -12,6 +12,10 @@
 */
 
 Route::get('/', 'HomeController@Home');
+Route::get('language/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    return redirect('/');
+});
 Route::get('/about-ppcrental.html','HomeController@About');
 Route::get('/contact-to-ppcrental.html','HomeController@Contact');
 Route::get('/ppcrental-news.html','HomeController@News');
@@ -22,6 +26,7 @@ Route::get('/ppcrental-commercial.html','HomeController@Commercial');
 Route::get('/ppcrental-sale.html','HomeController@Sale');
 Route::get('/ppcrental-search.html','HomeController@Search');
 Route::get('/for-agent.html','HomeController@ForAgent');
+Route::get('/search.html','SearchController@Search');
 //================== Admin routes ================================
 Route::get('/admin','Admin\AdminController@Home')->middleware('not.login');
 Route::get('/admin/log-in','Admin\AccountController@getLogin');
@@ -81,7 +86,7 @@ Route::get('admin/new-property-feature','Admin\FeatureController@Create')->middl
 
 //user management
 Route::get('admin/user-management','Admin\UserController@Index')->middleware('not.login');
-Route::get('admin/reset_password-user-{id}','Admin\UserController@ResetPassword')->middleware('not.login');
+Route::get('admin/reset-password-user-{id}','Admin\UserController@ResetPassword')->middleware('not.login');
 Route::get('admin/create-user','Admin\UserController@Create')->middleware('not.login');
 Route::post('admin/stored-user','Admin\UserController@Stored')->middleware('not.login');
 Route::get('admin/edit-user-{id}','Admin\UserController@Edit')->middleware('not.login');

@@ -113,7 +113,7 @@ class UserController extends Controller
         $user = PpcUser::find($id);
         $user->password='PpcRental@' . date('Y');
         $user->save();
-        return redirect('/admin.user-management')->with('success','Reset success');
+        return redirect('/admin/user-management')->with('success','Reset success');
     }
     public function Delete($id){
         $user = PpcUser::find($id);

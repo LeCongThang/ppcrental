@@ -20,6 +20,12 @@
 
     <!-- Custom Theme Style -->
     <link href="{{URL::asset('')}}css/custom.min.css" rel="stylesheet">
+    <style>
+        html{
+            background-image:  url("{{URL::asset('')}}images/common_icon/image-gold-coast.jpg");
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body class="login">
@@ -61,8 +67,8 @@
                         <br />
 
                         <div>
-                            <h1><i class="fa fa-paw"></i> HBB Solutions Company</h1>
-                            <p>©2017 All Rights Reserved. Privacy and Terms</p>
+                            <img src="{{URL::asset('')}}images/common_icon/logo.png">
+                            <p style="color: #342315;">©2017 All Rights Reserved. Designed by <a href="https://hbbsolution.com" target="_blank">HBB Solutions</a> </p>
                         </div>
                     </div>
                 </form>

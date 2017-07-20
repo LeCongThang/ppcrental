@@ -38,7 +38,7 @@
                     @endif
                 </li>
                 <li>
-                    <span><a href=""><img src="{{URL::asset('')}}images/common_icon/vn.gif"/></a> &nbsp;<a href=""> <img
+                    <span><a href="{{URL::asset('')}}language/vi"><img src="{{URL::asset('')}}images/common_icon/vn.gif"/></a> &nbsp;<a href="{{URL::asset('')}}language/en"> <img
                                     src="{{URL::asset('')}}images/common_icon/us.gif"/></a></span>
                 </li>
 

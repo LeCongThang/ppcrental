@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PpcAbout;
+use App\Models\PpcDistrict;
 use App\Models\PpcNews;
 use App\Models\PpcProperty;
 use App\Models\PpcPropertyCategory;
@@ -12,12 +13,14 @@ class HomeController extends Controller
 {
     public function Home(){
         $slider = PpcSlider::where('status',1)->orderBy('sort_order','asc')->get();
-        $news=PpcNews::where('status',1)->orderBy('updated_at','desc')->get();
+        $news=PpcNews::where('status',1)->orderBy('updated_at','desc')->take(2)->get();
         $property=PpcProperty::where('status',1)->orderBy('updated_at','desc')->get();
+        $district = PpcDistrict::where('status',1)->orderBy('sort_order','asc')->get();
         return view('welcome',[
             'slider'=>$slider,
             'news'=>$news,
             'property'=>$property,
+            'district'=>$district
 
         ]);
     }

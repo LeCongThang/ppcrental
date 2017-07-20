@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -41,7 +42,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class PpcProperty extends Eloquent
 {
-	protected $table = 'ppc_property';
+
+
+    protected $table = 'ppc_property';
 
 	protected $casts = [
 		'status' => 'bool',

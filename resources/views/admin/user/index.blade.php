@@ -53,7 +53,7 @@
 
                                 <td>
                                     <a href="{{URL::asset('')}}admin/edit-user-{{$item->id}}" class="btn btn-xs btn-primary">Edit</a>
-                                    <a href="{{URL::asset('')}}admin/reset_password-user-{{$item->id}}" class="btn btn-xs btn-primary">Reset password</a>
+                                    <a href="{{URL::asset('')}}admin/reset-password-user-{{$item->id}}" class="btn btn-xs btn-primary">Reset password</a>
                                     @if($loop->count<=2)
                                         <i>Default 3 user, can't delete</i>
                                     @else

@@ -74,91 +74,99 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 grid">
-                    <figure class="effect-sarah district">
-                        <img src="{{URL::asset('')}}images/homepage/quan-1.jpg" class="district img-responsive"/>
-                        <figcaption>
-                            <h2><b>District 1</b></h2>
-                            <p>Bubba likes to appear out of thin air.</p>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
+                @foreach($district as $item)
+                    @if($loop->iteration==1)
+                    <div class="col-lg-8 grid">
+                        <figure class="effect-sarah district">
+                            <img src="{{URL::asset('')}}images/homepage/{{$item->image}}" class="district img-responsive"/>
+                            <figcaption>
+                                <h2><b>{{$item->name_en}}</b></h2>
+                                <p>{{str_limit($item->description_en,150)}}</p>
+                                <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View more</a>
+                            </figcaption>
+                        </figure>
 
-                </div>
-                <div class="col-lg-4 grid">
+                    </div>
+                    @elseif($loop->iteration==2)
+                    <div class="col-lg-4 grid">
 
-                    <figure class="effect-chico district" style="margin-bottom: 30px;">
-                        <img src="{{URL::asset('')}}images/homepage/quan-2.jpg" class="district img-responsive"/>
-                        <figcaption>
-                            <h2><b>District 1</b></h2>
-                            <p>Bubba likes to appear out of thin air.</p>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
+                        <figure class="effect-chico district" style="margin-bottom: 30px;">
+                            <img src="{{URL::asset('')}}images/homepage/{{$item->image}}" class="district img-responsive"/>
+                            <figcaption>
+                                <h2><b>{{$item->name_en}}</b></h2>
+                                <p>{{str_limit($item->description_en,40)}}</p>
+                                <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View more</a>
+                            </figcaption>
+                        </figure>
+                        @elseif($loop->iteration==3)
 
+                        <figure class="effect-ruby district" style="margin-bottom: 30px;">
+                            <img src="{{URL::asset('')}}images/homepage/{{$item->image}}" class="district img-responsive"/>
+                            <figcaption>
+                                <h2><b>{{$item->name_en}}</b></h2>
+                                <p>{{str_limit($item->description_en,40)}}</p>
+                                <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View more</a>
+                            </figcaption>
+                        </figure>
 
-                    <figure class="effect-ruby district" style="margin-bottom: 30px;">
-                        <img src="{{URL::asset('')}}images/homepage/quan-binhthanh.jpg"
-                             class="district img-responsive"/>
-                        <figcaption>
-                            <h2><b>District 1</b></h2>
-                            <p>Bubba likes to appear out of thin air.</p>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-
-                </div>
-                <div class="col-lg-4 padding30 grid">
-                    <figure class="effect-roxy district">
-                        <img src="{{URL::asset('')}}images/homepage/quan-5.jpg" class="img-responsive"/>
-                        <figcaption>
-                            <h2><b>District 1</b></h2>
-                            <p>Bubba likes to appear out of thin air.</p>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-lg-4 padding30 grid">
-                    <figure class="effect-roxy district">
-                        <img src="{{URL::asset('')}}images/homepage/quan-4.jpg" class="img-responsive"/>
-                        <figcaption>
-                            <h2><b>District 1</b></h2>
-                            <p>Bubba likes to appear out of thin air.</p>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-lg-4 padding30 grid">
-                    <figure class="effect-roxy district">
-                        <img src="{{URL::asset('')}}images/homepage/quan-5.jpg" class="img-responsive"/>
-                        <figcaption>
-                            <h2><b>District 1</b></h2>
-                            <p>Bubba likes to appear out of thin air.</p>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-lg-6 grid">
-                    <figure class="effect-ruby district">
-                        <img src="{{URL::asset('')}}images/homepage/quan-phunhuan.jpg" class="img-responsive"/>
-                        <figcaption>
-                            <h2><b>District 1</b></h2>
-                            <p>Bubba likes to appear out of thin air.</p>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-lg-6 grid">
-                    <figure class="effect-ruby district">
-                        <img src="{{URL::asset('')}}images/homepage/quan-7.jpg" class="img-responsive"/>
-                        <figcaption>
-                            <h2><b>District 1</b></h2>
-                            <p>Bubba likes to appear out of thin air.</p>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                </div>
-
+                    </div>
+                    @elseif($loop->iteration==4)
+                    <div class="col-lg-4 padding30 grid">
+                        <figure class="effect-roxy district">
+                            <img src="{{URL::asset('')}}images/homepage/{{$item->image}}" class="district img-responsive"/>
+                            <figcaption>
+                                <h2><b>{{$item->name_en}}</b></h2>
+                                <p>{{str_limit($item->description_en,40)}}</p>
+                                <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    @elseif($loop->iteration==5)
+                    <div class="col-lg-4 padding30 grid">
+                        <figure class="effect-roxy district">
+                            <img src="{{URL::asset('')}}images/homepage/{{$item->image}}" class="district img-responsive"/>
+                            <figcaption>
+                                <h2><b>{{$item->name_en}}</b></h2>
+                                <p>{{str_limit($item->description_en,40)}}</p>
+                                <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    @elseif($loop->iteration==6)
+                    <div class="col-lg-4 padding30 grid">
+                        <figure class="effect-roxy district">
+                            <img src="{{URL::asset('')}}images/homepage/{{$item->image}}" class="district img-responsive"/>
+                            <figcaption>
+                                <h2><b>{{$item->name_en}}</b></h2>
+                                <p>{{str_limit($item->description_en,40)}}</p>
+                                <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    @elseif($loop->iteration==7)
+                    <div class="col-lg-6 grid">
+                        <figure class="effect-ruby district">
+                            <img src="{{URL::asset('')}}images/homepage/{{$item->image}}" class="district img-responsive"/>
+                            <figcaption>
+                                <h2><b>{{$item->name_en}}</b></h2>
+                                <p>{{str_limit($item->description_en,50)}}</p>
+                                <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    @elseif($loop->iteration==8)
+                    <div class="col-lg-6 grid">
+                        <figure class="effect-ruby district">
+                            <img src="{{URL::asset('')}}images/homepage/{{$item->image}}" class="district img-responsive"/>
+                            <figcaption>
+                                <h2><b>{{$item->name_en}}</b></h2>
+                                <p>{{str_limit($item->description_en,50)}}</p>
+                                <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    @endif
+                @endforeach
             </div>
 
 
@@ -221,7 +229,7 @@
                     <div class="padding30"></div>
                 </div>
                 @foreach($news as $n)
-                    <div class="col-lg-4 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s">
+                    <div class="col-lg-6 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s">
                         <div class="district">
                             <div class="news">
                                 <h5><a href="">{{$n->title_en}}</a></h5>
