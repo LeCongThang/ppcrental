@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PpcDistrict;
 use App\Models\PpcPropertyCategory;
+use App\Models\PpcProvince;
 use App\Models\PpcSystemConfig;
 use Carbon\Carbon;
 use DB;
@@ -89,5 +91,43 @@ class AdminController extends Controller
         return redirect('/admin/menu-management')->with('success', 'Delete successfully');
     }
 
+    public function DistrictInHomepage()
+    {
+        $district = PpcDistrict::where('status', 1)->orderBy('sort_order', 'asc')->get();
 
+        $province = PpcDistrict::get();
+        return view('admin.homepage.index', [
+            'district' => $district,
+            'province' => $province
+        ]);
+    }
+
+    public function EditPosition($id)
+    {
+        $province = PpcDistrict::get();
+        $district = PpcDistrict::find($id);
+        return view('admin.homepage.edit', ['district' => $district, 'province' => $province]);
+    }
+
+    public function UpdatePosition(Request $request, $id)
+    {
+        if ($request->get('district') != $id) {
+            $district = PpcDistrict::find($id);
+            $sort=$district->sort_order;
+            $district->sort_order=0;
+            $district->status=0;
+            $district->save();
+            $newdis = PpcDistrict::find($request->get('district'));
+            $newdis->sort_order=$sort;
+            $newdis->status=1;
+            $newdis->save();
+            return redirect('/admin/district-in-homepage');
+        }
+    }
+
+    public function DistrictDetail($id)
+    {
+        $data = PpcDistrict::find($id);
+        return $data;
+    }
 }

@@ -51,18 +51,30 @@ $config['privateDir'] = array(
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_images
 
 $config['images'] = array(
-    'maxWidth'  => 1600,
-    'maxHeight' => 1200,
+    'maxWidth'  => 1000,
+    'maxHeight' => 800,
     'quality'   => 80,
     'sizes' => array(
         'small'  => array('width' => 480, 'height' => 320, 'quality' => 80),
         'medium' => array('width' => 600, 'height' => 480, 'quality' => 80),
-        'large'  => array('width' => 800, 'height' => 600, 'quality' => 80)
+        'large'  => array('width' => 1000, 'height' => 800, 'quality' => 80)
     )
 );
 if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/user/'){
-    $config['Images']['maxWidth'] = 150;
-    $config['Images']['maxHeight'] = 150;
+    $config['Images']['maxWidth'] = 60;
+    $config['Images']['maxHeight'] = 60;
+}
+if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/news/'){
+    $config['News']['maxWidth'] = 800;
+    $config['News']['maxHeight'] = 600;
+}
+if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/project/'){
+    $config['Properties']['maxWidth'] = 800;
+    $config['Properties']['maxHeight'] = 600;
+}
+if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/about/'){
+    $config['About']['maxWidth'] = 1000;
+    $config['About']['maxHeight'] = 800;
 }
 /*=================================== Backends ========================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_backends
@@ -99,7 +111,30 @@ $config['resourceTypes'][] = array(
     'deniedExtensions'  => '',
     'backend'           => 'default'
 );
-
+$config['resourceTypes'][] = array(
+    'name'              => 'Properties',
+    'directory'         => 'images/project',
+    'maxSize'           => 0,
+    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+    'deniedExtensions'  => '',
+    'backend'           => 'default'
+);
+$config['resourceTypes'][] = array(
+    'name'              => 'News',
+    'directory'         => 'images/news',
+    'maxSize'           => 0,
+    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+    'deniedExtensions'  => '',
+    'backend'           => 'default'
+);
+$config['resourceTypes'][] = array(
+    'name'              => 'About',
+    'directory'         => 'images/about',
+    'maxSize'           => 0,
+    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+    'deniedExtensions'  => '',
+    'backend'           => 'default'
+);
 /*================================ Access Control =====================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_roleSessionVar
 

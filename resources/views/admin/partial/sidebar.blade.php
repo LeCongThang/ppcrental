@@ -27,16 +27,17 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="index.html">Dashboard</a></li>
-                            <li><a href="index2.html">Dashboard2</a></li>
-                            <li><a href="index3.html">Dashboard3</a></li>
+
+                            <li><a href="{{URL::asset('')}}admin">Dashboard</a></li>
+                            <li><a href="{{URL::asset('')}}admin/district-in-homepage">District in homepage</a></li>
+
                         </ul>
                     </li>
 
                     <li><a><i class="fa fa-table"></i> Properties <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{URL::asset('')}}admin/new-property">Add new property</a></li>
-                            <li><a href="{{URL::asset('')}}admin/property-management">List properties</a></li>
+                            <li><a href="{{URL::asset('')}}admin/properties-management">List properties</a></li>
                             <li><a href="{{URL::asset('')}}admin/status-feature-property">Status and Feature</a></li>
                         </ul>
                     </li>

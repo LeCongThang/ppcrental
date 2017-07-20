@@ -34,22 +34,18 @@
                 <div class="col-md-9">
                     <div class="panel panel-custom">
                         <div class="panel-body panel-body-custom">
-                            <div class="newspage">
-                                <h3>Welcome!</h3>
-                                <i>ancvdasdfls</i>
-                                <img src="{{URL::asset('')}}images/homepage/banner.jpg" class="img-responsive">
-                                <p>Perfect Property Company (PPC) is known as a professional enterprise operating in the
-                                    field of real estate brokerage and marketing both domestically and internationally.
-                                    PPC
-                                    focuses on two main areas:
-                                    - Real estate - Tourist Resorts PPC is the most trusted and satisfied option for all
-                                    customers. PPC is found and </p>
-                                <a href="" class="btn search-form pull-right">Read more</a>
+                            @foreach($news as $item)
+                                <div class="newspage">
+                                    <h3>{{$item->title_en}}</h3>
+                                    <i style="font-weight: normal;">{{\App\Models\PpcUser::find($item->author_id)->fullname}} - {{$item->updated_at}}</i>
+                                    <img src="{{URL::asset('')}}images/news/{{$item->image}}" class="img-responsive">
+                                    <p>{!! $item->content_en !!}</p>
+                                    <a href="" class="btn search-form">Read more</a>
 
-                            </div>
-                            <hr>
-
-
+                                </div>
+                                <hr>
+                            @endforeach
+                                {!! $news->render() !!}
                         </div>
                     </div>
                 </div>
@@ -119,26 +115,25 @@
                         </div>
                         <div class="panel-body">
 
-                                <div class="col-lg-12">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
+                            <div class="col-lg-12">
+                                <img src="{{URL::asset('')}}images/homepage/property.jpg"
+                                     class="district img-responsive">
+                                <h5>The Vista An Phu</h5>
+                                <i>537 Nguyen Duy Trinh, District 2</i>
+                                <hr/>
+                                <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
+                                            class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
+                            </div>
 
-                                <div class="col-lg-12">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
-
+                            <div class="col-lg-12">
+                                <img src="{{URL::asset('')}}images/homepage/property.jpg"
+                                     class="district img-responsive">
+                                <h5>The Vista An Phu</h5>
+                                <i>537 Nguyen Duy Trinh, District 2</i>
+                                <hr/>
+                                <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
+                                            class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
+                            </div>
 
 
                         </div>

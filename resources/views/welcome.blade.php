@@ -33,33 +33,25 @@
         <!-- Indicators -->
 
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
+            @foreach($slider as $item)
+                <li data-target="#myCarousel" data-slide-to="{{$loop->iteration-1}}"></li>
+
+            @endforeach
         </ol>
         <!-- Wrapper for Slides -->
         <div class="carousel-inner">
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('{{URL::asset('')}}images/slider/slider-1500013617.jpg');"></div>
-                {{--<div class="carousel-caption">--}}
-                {{--<h2>Caption 1</h2>--}}
-                {{--</div>--}}
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('{{URL::asset('')}}images/slider/slider-1500013617.jpg');"></div>
-                {{--<div class="carousel-caption">--}}
-                {{--<h2>Caption 2</h2>--}}
-                {{--</div>--}}
-            </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('{{URL::asset('')}}images/slider/slider-1500013617.jpg');"></div>
-                {{--<div class="carousel-caption">--}}
-                {{--<h2>Caption 3</h2>--}}
-                {{--</div>--}}
-            </div>
+
+            @foreach($slider as $item)
+                <div class="item">
+                    <!-- Set the second background image using inline CSS below. -->
+                    <div class="fill"
+                         style="background-image:url('{{URL::asset('')}}images/slider/{{$item->slider}}');"></div>
+                    {{--<div class="carousel-caption">--}}
+                    {{--<h2>Caption 2</h2>--}}
+                    {{--</div>--}}
+                </div>
+            @endforeach
+
         </div>
 
         {{--<!-- Controls -->--}}
@@ -78,64 +70,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="panel panel-custom">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">FIND YOUR PLACE</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form class="form-inline" action="" method="">
-                                <div class="form-group col-lg-3">
-
-                                    <select class="form-control">
-                                        <option value="">Location</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-lg-3">
-
-                                    <select class="form-control">
-                                        <option value="">Property Type</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-lg-3">
-
-                                    <select class="form-control">
-                                        <option value="">Property Status</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-lg-3">
-
-                                    <input type="text" class="form-control" placeholder="Keyword"/>
-                                </div>
-                                <div class="form-group col-lg-3">
-
-                                    <select class="form-control">
-                                        <option value="">Bedrooms</option>
-                                    </select>
-
-                                </div>
-                                <div class="form-group col-lg-3">
-
-                                    <select class="form-control">
-                                        <option value="">Min Budget</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-lg-3">
-                                    <select class="form-control">
-                                        <option value="">Max Budget</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-lg-3">
-                                    <button type="submit" class="btn btn-default form-control search-form">Search
-                                    </button>
-                                </div>
-
-
-                            </form>
-
-                        </div>
-                    </div>
+                    @include('partial.search')
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-lg-8 grid">
@@ -248,71 +184,19 @@
                         </div>
                         <div class="panel-body">
                             <section class="regular slider">
-                                <div class="col-lg-3">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
+                                @foreach($property as $p)
+                                    <div class="col-lg-3">
+                                        <a href=""><img src="{{URL::asset('')}}images/project/{{$p->image_overall}}"
+                                                        class="district img-responsive"></a>
+                                        <h4><a href="">{{$p->name_en}}</a></h4>
+                                        <i style="font-weight: normal"> {{str_limit($p->location,36)}}</i>
+                                        <hr/>
+                                        <p><span class="glyphicon glyphicon-home">{{$p->area}}</span> <span
+                                                    class="glyphicon glyphicon-bed pull-right"> {{$p->bedroom}}</span>
+                                        </p>
+                                    </div>
+                                @endforeach
 
-                                <div class="col-lg-3">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <img src="{{URL::asset('')}}images/homepage/property.jpg"
-                                         class="district img-responsive">
-                                    <h5>The Vista An Phu</h5>
-                                    <i>537 Nguyen Duy Trinh, District 2</i>
-                                    <hr/>
-                                    <p><span class="glyphicon glyphicon-home"> 50m<sup>2</sup></span> <span
-                                                class="glyphicon glyphicon-bed pull-right"> 2Bedrooms</span></p>
-                                </div>
                             </section>
                         </div>
                     </div>
@@ -336,37 +220,19 @@
                     <h4>LATEST NEWS:</h4>
                     <div class="padding30"></div>
                 </div>
+                @foreach($news as $n)
+                    <div class="col-lg-4 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s">
+                        <div class="district">
+                            <div class="news">
+                                <h5><a href="">{{$n->title_en}}</a></h5>
+                            </div>
 
-                <div class="col-lg-4 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s">
-                    <div class="district">
-                        <div class="news">
-                            <h5>WHY SHOULD YOU CHOOSE CHAMMING LAPINTER?</h5>
+                            <a href=""><img src="{{URL::asset('')}}images/news/{{$n->image}}" class="image-news"></a>
+
                         </div>
-
-                        <img src="{{URL::asset('')}}images/homepage/news.jpg" class="image-news">
-
                     </div>
-                </div>
-                <div class="col-lg-4 col-xs-12 wow fadeInDown" data-wow-duration="1.5s">
-                    <div class="district">
-                        <div class="news">
-                            <h5>WHY SHOULD YOU CHOOSE CHAMMING LAPINTER?</h5>
-                        </div>
+                @endforeach
 
-                        <img src="{{URL::asset('')}}images/homepage/news.jpg" class="image-news">
-
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xs-12 wow fadeInRight" data-wow-duration="1.5s">
-                    <div class="district">
-                        <div class="news">
-                            <h5>WHY SHOULD YOU CHOOSE CHAMMING LAPINTER?</h5>
-                        </div>
-
-                        <img src="{{URL::asset('')}}images/homepage/news.jpg" class="image-news">
-
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -416,6 +282,7 @@
         $('.arrright').click(function () {
             $('.slider').slick('slickNext');
         })
-
+        $(".carousel-inner .item:first").addClass("active");
+        $(".carousel-indicators li:first").addClass("active");
     </script>
 @endsection

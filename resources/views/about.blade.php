@@ -34,33 +34,18 @@
                 <div class="col-md-12">
                     <div class="panel panel-custom">
                         <div class="panel-body panel-body-custom">
-                            <h3>Welcome!</h3>
-                            <p>Perfect Property Company (PPC) is known as a professional enterprise operating in the
-                                field of real estate brokerage and marketing both domestically and internationally. PPC
-                                focuses on two main areas:
-                                - Real estate - Tourist Resorts PPC is the most trusted and satisfied option for all
-                                customers. PPC is found and </p>
-                            <img src="{{URL::asset('')}}images/homepage/banner.jpg" class="img-responsive">
+                            {!! $about->intro_en !!}
                             <div class="col-lg-4">
-                                <h3>About us</h3>
-                                <p>Perfect Property Company (PPC) is known as a professional enterprise operating
-                                    in the field of real estate brokerage and marketing both domestically and internationally. PPC focuses on two main
-                                    areas: - Real estate - Tourist Resorts PPC is the most trusted and satisfied option for all customers. PPC is found and </p>
+                                {!! $about->about_en !!}
                             </div>
                             <div class="col-lg-4">
-                                <h3>Our team</h3>
-                                <p>Perfect Property Company (PPC) is known as a professional enterprise operating
-                                    in the field of real estate brokerage and marketing both domestically and internationally. PPC focuses on two main
-                                    areas: - Real estate - Tourist Resorts PPC is the most trusted and satisfied option for all customers. PPC is found and </p>
+                                {!! $about->ourteam_en !!}
                             </div>
                             <div class="col-lg-4">
-                                <h3>CEO</h3>
-                                <p>Perfect Property Company (PPC) is known as a professional enterprise operating
-                                    in the field of real estate brokerage and marketing both domestically and internationally. PPC focuses on two main
-                                    areas: - Real estate - Tourist Resorts PPC is the most trusted and satisfied option for all customers. PPC is found and </p>
+                                {!! $about->ceo_en !!}
                             </div>
                             <hr/>
-                            hadbjsd
+
                             <hr/>
                         </div>
                     </div>

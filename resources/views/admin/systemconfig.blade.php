@@ -30,14 +30,14 @@
                                     <td>
                                         <label class="control-label" for="first-name">Hotline</label>
 
-                                        <input type="text" id="logo" name="logo" required="required"
+                                        <input type="text" id="hotline" name="hotline" required="required"
                                                value="{{$system->hotline}}" class="form-control">
                                     </td>
                                     <td>
                                         <label class="control-label"
                                                for="first-name">Email </label>
 
-                                        <input type="text" id="logo" name="logo" required="required"
+                                        <input type="text" id="mail" name="mail" required="required"
                                                value="{{$system->mail}}" class="form-control">
 
                                     </td>
@@ -47,7 +47,7 @@
                                         <label class="control-label" for="first-name">Facebook
                                             link</label>
 
-                                        <input type="text" id="logo" name="logo" required="required"
+                                        <input type="text" id="facebook" name="facebook" required="required"
                                                value="{{$system->facebook}}"
                                                class="form-control">
 
@@ -56,7 +56,7 @@
                                         <label class="control-label" for="first-name">Youtube
                                             link</label>
 
-                                        <input type="text" id="logo" name="logo" required="required"
+                                        <input type="text" id="youtube" name="youtube" required="required"
                                                value="{{$system->youtube}}" class="form-control">
 
                                     </td>
@@ -64,7 +64,7 @@
                                         <label class="control-label" for="first-name">Linked
                                             link </label>
 
-                                        <input type="text" id="logo" name="logo" required="required"
+                                        <input type="text" id="linked" name="linked" required="required"
                                                value="{{$system->linked}}" class="form-control">
 
                                     </td>
@@ -74,7 +74,7 @@
                                         <label class="control-label" for="first-name">Sologan
                                             (Vietnamese) </label>
 
-                                        <input type="text" id="logo" name="logo" required="required"
+                                        <input type="text" id="logo" name="sologan" required="required"
                                                value="{{$system->sologan}}" class="form-control">
 
                                     </td>
@@ -82,7 +82,7 @@
                                         <label class="control-label" for="first-name">Sologan
                                             (English) </label>
 
-                                        <input type="text" id="logo" name="logo" required="required"
+                                        <input type="text" id="logo" name="sologan_en" required="required"
                                                value="{{$system->sologan_en}}"
                                                class="form-control">
 

@@ -71,6 +71,7 @@
     $(".tab-content .tab-pane:first").addClass("in");
     $(".tab-content .tab-pane:first").addClass("active");
 </script>
+
 @yield('scripts')
 </body>
 </html>

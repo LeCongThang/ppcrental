@@ -37,7 +37,7 @@ class SliderController extends Controller
 
             $destinationPath = public_path('images/slider');
             $img = Image::make($image->getRealPath());
-            $img->insert(public_path('images/homepage/logo.png'), 'bottom-right', 50, 250)
+            $img->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 250)
                 ->resize(1349, 663, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($destinationPath . '/' . $filename);
@@ -54,7 +54,7 @@ class SliderController extends Controller
 
             return redirect('/admin/slider-management')->with('success', 'Created successfully');
         } catch (\Exception $e) {
-            dd($e);
+            return redirect('/admin/slider-management')->with('Fail', 'Image size not correct, please choose image (16:9)');
         }
     }
 
@@ -76,7 +76,7 @@ class SliderController extends Controller
 
                 $destinationPath = public_path('images/slider');
                 $img = Image::make($image->getRealPath());
-                $img->insert(public_path('images/homepage/logo.png'), 'bottom-right', 50, 250)
+                $img->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 250)
                     ->resize(1349, 663, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($destinationPath . '/' . $filename);
@@ -98,11 +98,11 @@ class SliderController extends Controller
             $slider->save();
 
 
-            return redirect('/admin/slider-management')->with('success', 'Created successfully');
+            return redirect('/admin/slider-management')->with('success', 'Updated successfully');
         } catch (\Exception $e) {
             dd($e);
         }
-        return redirect('/admin/slider-management')->with('success', 'Updated successfully');
+
     }
 
     public function DeleteSlider($id)

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 17 Jul 2017 06:08:37 +0000.
+ * Date: Wed, 19 Jul 2017 07:11:56 +0000.
  */
 
 namespace App\Models;
@@ -27,36 +27,33 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $location
  * @property int $bedroom
  * @property int $bathroom
- * @property float $area
+ * @property string $area
  * @property int $parkingplace
  * @property string $feature
  * @property string $map
  * @property string $location_en
  * @property string $seotag
  * @property int $saler_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models
  */
 class PpcProperty extends Eloquent
 {
 	protected $table = 'ppc_property';
-	public $incrementing = false;
-	public $timestamps = false;
 
 	protected $casts = [
-		'id' => 'int',
 		'status' => 'bool',
 		'property_status' => 'int',
 		'property_type' => 'int',
 		'bedroom' => 'int',
 		'bathroom' => 'int',
-		'area' => 'float',
 		'parkingplace' => 'int',
 		'saler_id' => 'int'
 	];
 
 	protected $fillable = [
-		'id',
 		'status',
 		'name',
 		'name_en',

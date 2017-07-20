@@ -92,18 +92,18 @@
     <script>
         CKEDITOR.replace('intro', {
             filebrowserBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=Images',
+            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=About',
             filebrowserUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=About'
         });
         CKEDITOR.replace('about');
         CKEDITOR.replace('ourteam');
         CKEDITOR.replace('ceo');
         CKEDITOR.replace('intro_en', {
             filebrowserBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=Images',
+            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=About',
             filebrowserUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=About'
         });
         CKEDITOR.replace('about_en');
         CKEDITOR.replace('ourteam_en');

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@Home');
 Route::get('/about-ppcrental.html','HomeController@About');
 Route::get('/contact-to-ppcrental.html','HomeController@Contact');
 Route::get('/ppcrental-news.html','HomeController@News');
@@ -91,4 +89,19 @@ Route::post('admin/update-user-{id}','Admin\UserController@Update')->middleware(
 Route::get('admin/delete-user-{id}','Admin\UserController@Delete')->middleware('not.login');
 Route::post('admin/remove-user-{id}','Admin\UserController@Remove')->middleware('not.login');
  //properties management
+Route::get('admin/properties-management','Admin\PropertyController@Index')->middleware('not.login');
+Route::get('admin/new-property','Admin\PropertyController@Create')->middleware('not.login');
+Route::post('admin/stored-property','Admin\PropertyController@Stored')->middleware('not.login');
+Route::get('admin/load-district-{id}','Admin\PropertyController@LoadDistrict')->middleware('not.login');
+Route::get('admin/load-ward-{id}','Admin\PropertyController@LoadWard')->middleware('not.login');
+Route::get('admin/load-street-{id}','Admin\PropertyController@LoadStreet')->middleware('not.login');
+Route::get('admin/edit-property-{id}','Admin\PropertyController@Edit')->middleware('not.login');
+Route::post('admin/update-property-{id}','Admin\PropertyController@Update')->middleware('not.login');
+Route::get('admin/delete-property-{id}','Admin\PropertyController@Delete')->middleware('not.login');
+Route::post('admin/remove-property-{id}','Admin\PropertyController@Remove')->middleware('not.login');
 
+//district in homepage
+Route::get('admin/district-in-homepage','Admin\AdminController@DistrictInHomepage')->middleware('not.login');
+Route::get('admin/update-district-home-{id}','Admin\AdminController@EditPosition')->middleware('not.login');
+Route::post('admin/edit-position-{id}','Admin\AdminController@UpdatePosition')->middleware('not.login');
+Route::get('admin/district-detail-{id}','Admin\AdminController@DistrictDetail')->middleware('not.login');
