@@ -30,4 +30,5 @@ class SearchController extends Controller
             return view('property', ['items' => $items]);
 
     }
+
 }

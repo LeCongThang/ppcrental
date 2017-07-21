@@ -19,7 +19,7 @@
         <!--</ul>-->
         <div class="home-below-menu"
              style="background: url('{{URL::asset('images/common_icon/title-bg.jpg')}}') no-repeat center center;background-size: cover;">
-            <h2>COMMERCIAL</h2>
+            <h2>RESULT</h2>
         </div>
 
 
@@ -54,10 +54,10 @@
                             @foreach($items as $i)
 
                                 <div class="col-lg-4">
-                                    <img src="{{URL::asset('')}}images/project/{{$i->image_overall}}"
-                                         class="img-responsive">
-                                    <h4>{{$i->name_en}}</h4>
-                                    <i style="color: #75D2F0;font-weight:normal">{{str_limit($i->location,45)}}</i>
+                                    <a href="{{URL::asset('')}}property/{{$i->id}}-{{$i->slug}}.html" ><img src="{{URL::asset('')}}images/project/{{$i->image_overall}}"
+                                         class="img-responsive"></a>
+                                    <h4><a href="{{URL::asset('')}}property/{{$i->id}}-{{$i->slug}}.html" >{{$i->name_en}}</a></h4>
+                                    <i style="font-weight:normal"><i class="fa fa-map-marker" aria-hidden="true"></i> {{str_limit($i->location,45)}}</i>
                                     <p>{!! str_limit($i->description_en,300) !!}</p>
                                     <hr/>
                                     <p><span class="glyphicon glyphicon-home"> {{$i->area}}</span> &nbsp; &nbsp;&nbsp;

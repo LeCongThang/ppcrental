@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function Home(){
         $slider = PpcSlider::where('status',1)->orderBy('sort_order','asc')->get();
-        $news=PpcNews::where('status',1)->orderBy('updated_at','desc')->take(2)->get();
+        $news=PpcNews::where('status',1)->orderBy('updated_at','desc')->take(3)->get();
         $property=PpcProperty::where('status',1)->orderBy('updated_at','desc')->get();
         $district = PpcDistrict::where('status',1)->orderBy('sort_order','asc')->get();
         return view('welcome',[
@@ -60,18 +60,7 @@ class HomeController extends Controller
 
         return view('signup');
     }
-    public function Residential(){
-    return view('residential');
-}
-    public function Commercial(){
-        return view('commercial');
-    }
-    public function Sale(){
-        return view('sale');
-    }
-    public function Search(){
-        return view('search');
-    }
+
     public function ForAgent(){
         return view('agent');
     }

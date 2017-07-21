@@ -194,14 +194,14 @@
                             <section class="regular slider">
                                 @foreach($property as $p)
                                     <div class="col-lg-3">
-                                        <a href=""><img src="{{URL::asset('')}}images/project/{{$p->image_overall}}"
+                                        <a href="{{URL::asset('')}}property/{{$p->id}}-{{$p->slug}}.html"><img src="{{URL::asset('')}}images/project/{{$p->image_overall}}"
                                                         class="district img-responsive"></a>
-                                        <h4><a href="">{{$p->name_en}}</a></h4>
-                                        <i style="font-weight: normal"> {{str_limit($p->location,36)}}</i>
+                                        <h4><a href="{{URL::asset('')}}property/{{$p->id}}-{{$p->slug}}.html">{{$p->name_en}}</a></h4>
+                                        <i style="font-weight: normal"><i class="fa fa-map-marker" aria-hidden="true"></i> {{str_limit($p->location,33)}}</i>
                                         <hr/>
-                                        <p><span class="glyphicon glyphicon-home">{{$p->area}}</span> <span
+                                        <h5><span class="glyphicon glyphicon-home"> {{$p->area}}</span> <span
                                                     class="glyphicon glyphicon-bed pull-right"> {{$p->bedroom}}</span>
-                                        </p>
+                                        </h5>
                                     </div>
                                 @endforeach
 
@@ -229,13 +229,22 @@
                     <div class="padding30"></div>
                 </div>
                 @foreach($news as $n)
-                    <div class="col-lg-6 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s">
+                    <div class="col-lg-4 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s">
                         <div class="district">
-                            <div class="news">
-                                <h5><a href="">{{$n->title_en}}</a></h5>
-                            </div>
 
-                            <a href=""><img src="{{URL::asset('')}}images/news/{{$n->image}}" class="image-news"></a>
+                                <a style="border-bottom: 1px solid"
+                                   href="{{URL::asset('')}}/{{$n->id}}-{{$n->slug}}.html"
+                                   title="{{$item->title}}">
+                                    <img src="{{URL::asset('')}}images/news/{{$n->image}}" class="img-responsive"></a>
+                                <div class="content-tintuc" style="background-color: #ffffff;padding: 10px;">
+                                    <h3 style="font-size:20px;"><a href="{{URL::asset('')}}news/{{$n->id}}-{{$n->slug}}.html">{{str_limit($n->title_en,35)}}</a>
+                                    </h3>
+                                    <p style="color: black;font-weight: normal">{!! str_limit(strip_tags($n->content_en),150) !!}</p>
+                                </div>
+
+
+
+
 
                         </div>
                     </div>

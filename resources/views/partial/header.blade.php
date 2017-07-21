@@ -24,7 +24,7 @@
                 <li class="mauxanh">
                     <span class="glyphicon glyphicon-envelope"></span>{{$info->mail}}
                 </li>
-                <li><a href="{{URL::asset('')}}favorite-property.html"><span class="glyphicon glyphicon-heart"></span>
+                <li><a href="{{URL::asset('')}}favorite.html"><span class="glyphicon glyphicon-heart"></span>
                         Favorites</a></li>
                 <li>
                     @if(\Illuminate\Support\Facades\Session::get('agent_id')==null)
@@ -49,7 +49,7 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false"
-                           href="{{URL::asset('')}}ppcrental-{{$m->slug}}.html">{{$m->name_en}}</a>
+                           href="{{URL::asset('')}}{{$m->id}}-{{$m->slug}}.html">{{$m->name_en}}</a>
                         <ul class="dropdown-menu">
                             {!! \App\Http\Controllers\HomeController::LoadSubCat($m->id) !!}
 
@@ -63,7 +63,7 @@
                     <ul class="dropdown-menu">
                         @foreach($district as $d)
                             <li>
-                                <a href="{{URL::asset('')}}ppcrental-{{str_slug($d->name_en)}}-{{$d->id}}.html">{{$d->name_en}}</a>
+                                <a href="{{URL::asset('')}}search/{{$d->id}}-{{str_slug($d->name_en)}}.html">{{$d->name_en}}</a>
                             </li>
                         @endforeach
 

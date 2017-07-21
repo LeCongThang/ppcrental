@@ -1,5 +1,14 @@
 @extends('layout.userlayout')
 @section('content')
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     <div class="intro-header">
 
 
@@ -34,29 +43,29 @@
                 <div class="col-md-9">
                     <div class="panel panel-custom">
                         <div class="panel-body panel-body-custom">
-                            @foreach($news as $item)
-                                <div class="newspage">
-                                    <h3>
-                                        <a href="{{URL::asset('')}}news/{{$item->id}}-{{$item->slug}}.html">{{$item->title_en}}</a>
-                                    </h3>
-                                    <i style="font-weight: normal;">{{\App\Models\PpcUser::find($item->author_id)->fullname}}
-                                        - {{$item->updated_at}}</i>
-                                    <img src="{{URL::asset('')}}images/news/{{$item->image}}" class="img-responsive">
-                                    <p>{!! $item->content_en !!}</p>
-                                    <a href="{{URL::asset('')}}news/{{$item->id}}-{{$item->slug}}.html"
-                                       class="btn search-form">Read more</a>
+                            <h3>{{$news->title_en}}</h3>
+                            <i style="font-weight:normal">{{$news->updated_at}}</i>
+                            <img src="{{URL::asset('')}}images/news/{{$news->image}}" class="img-responsive">
+                            {!! $news->content_en !!}
+                            <a class="btn search-form" href="#" onclick="share_fb('{{URL::asset('')}}/news/{{$news->id}}-{{$news->slug_en}}.html');return false;" rel="nofollow"
+                               share_url="{{URL::asset('')}}/news/{{$news->id}}-{{$news->slug_en}}.html" target="_blank">
+                                <i class="fa fa-facebook" aria-hidden="true"></i> Share
+                            </a>
 
-                                </div>
-                                <hr>
-                            @endforeach
-                            {!! $news->render() !!}
                         </div>
                     </div>
                 </div>
 
-                @include('partial.searchright')
+                    @include('partial.searchright')
 
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        function share_fb(url) {
+            window.open('https://www.facebook.com/sharer/sharer.php?u='+url,'facebook-share-dialog',"width=626,height=436")
+        }
+    </script>
 @endsection

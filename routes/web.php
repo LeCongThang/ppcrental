@@ -16,17 +16,21 @@ Route::get('language/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return redirect('/');
 });
+Route::get('/add-favorite-{id}', 'PropertyController@AddFav');
+Route::get('/favorite.html','PropertyController@Favorite');
 Route::get('/about-ppcrental.html','HomeController@About');
 Route::get('/contact-to-ppcrental.html','HomeController@Contact');
 Route::get('/ppcrental-news.html','HomeController@News');
 Route::get('/sign-in.html','HomeController@Signin');
 Route::get('/sign-up.html','HomeController@Signup');
-Route::get('/ppcrental-residential.html','HomeController@Residential');
-Route::get('/ppcrental-commercial.html','HomeController@Commercial');
-Route::get('/ppcrental-sale.html','HomeController@Sale');
 Route::get('/ppcrental-search.html','HomeController@Search');
 Route::get('/for-agent.html','HomeController@ForAgent');
-Route::get('/search.html','SearchController@Search');
+Route::post('/search.html','SearchController@Search');
+Route::get('/news/{id}-{slug}.html','NewsController@Detail');
+Route::get('/property/{id}-{slug}.html','PropertyController@Detail');
+Route::get('/{id}-{slug}.html','PropertyController@FeatureProperty');
+Route::get('/search/{id}-{slug}.html','PropertyController@DistrictProperty');
+Route::get('/add-favorite-{id}.html','PropertyController@DistrictProperty');
 //================== Admin routes ================================
 Route::get('/admin','Admin\AdminController@Home')->middleware('not.login');
 Route::get('/admin/log-in','Admin\AccountController@getLogin');

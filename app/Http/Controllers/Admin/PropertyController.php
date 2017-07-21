@@ -73,22 +73,28 @@ class PropertyController extends Controller
         $property->saler_id = $request->get('saler_id');
         $property->description = $request->get('description');
         $property->description_en = $request->get('description_en');
+        $property->district = $request->get('district');
         $property->location = $request->get('area');
         $property->area = $request->get('location');
         $property->bedroom = $request->get('bedroom');
         $property->bathroom = $request->get('bathroom');
         $property->parkingplace = $request->get('parkingplace');
         $property->seotag = $request->get('seotag');
+        $fullsize = 'propertyfull-' . $property->id . '.jpg';
         $filename = 'property-' . time() . '.jpg';
         if ($request->hasFile('image_overall')) {
             $image = $request->file('image_overall');
 
             $destinationPath = public_path('images/project');
             $img = Image::make($image->getRealPath());
-            $img->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 250)
+            $img->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 50)
                 ->resize(307, 204, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $filename);
+            $imgfull = Image::make($image->getRealPath())->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 50)
+                ->resize(750, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $fullsize);
             $property->image_overall = $filename;
         }
         if ($request->get('status') != null) {
@@ -120,24 +126,35 @@ class PropertyController extends Controller
         $property->saler_id = $request->get('saler_id');
         $property->description = $request->get('description');
         $property->description_en = $request->get('description_en');
+        if ($request->get('district') != null) {
+            $property->district = $request->get('district');
+        }
         $property->location = $request->get('area');
         $property->area = $request->get('location');
         $property->bedroom = $request->get('bedroom');
         $property->bathroom = $request->get('bathroom');
         $property->parkingplace = $request->get('parkingplace');
         $property->seotag = $request->get('seotag');
+        $fullsize = 'propertyfull-' . $property->id . '.jpg';
         $filename = 'property-' . time() . '.jpg';
         if ($request->hasFile('image_overall')) {
             $image = $request->file('image_overall');
 
             $destinationPath = public_path('images/project');
             $img = Image::make($image->getRealPath());
-            $img->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 250)
+            $img->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 50)
                 ->resize(307, 204, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $filename);
+            $imgfull = Image::make($image->getRealPath())->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 50)
+                ->resize(750, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $fullsize);
             if (file_exists('images/project/' . $property->image_overall)) {
                 unlink('images/project/' . $property->image_overall);
+            }
+            if (file_exists('images/project/propertyfull-' . $property->id)) {
+                unlink('images/project/propertyfull-' . $property->id);
             }
             $property->image_overall = $filename;
         }
@@ -145,6 +162,7 @@ class PropertyController extends Controller
             $property->status = $request->get('status');
         } else
             $property->status = 0;
+        $property->feature=null;
         foreach ($feature as $i) {
             if ($request->get('feature' . $i->id) != null) {
                 $property->feature .= $i->id . ',';
@@ -177,7 +195,7 @@ class PropertyController extends Controller
     {
         $p = PpcProperty::find($id);
         if ($p != null) {
-            return view('admin.property.delete',['id'=>$id]);
+            return view('admin.property.delete', ['id' => $id]);
         }
 
     }
@@ -188,6 +206,9 @@ class PropertyController extends Controller
         if ($p != null) {
             if (file_exists('images/project/' . $p->image_overall)) {
                 unlink('images/project/' . $p->image_overall);
+            }
+            if (file_exists('images/project/propertyfull-' . $p->id)) {
+                unlink('images/project/propertyfull-' . $p->id);
             }
             $p->delete();
             return redirect('/admin/properties-management');

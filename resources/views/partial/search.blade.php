@@ -3,7 +3,7 @@
         <h3 class="panel-title">FIND YOUR PLACE</h3>
     </div>
     <div class="panel-body">
-        <form class="form-inline" action="{{URL::asset('')}}search.html" method="get">
+        <form class="form-inline" action="{{URL::asset('')}}search.html" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group col-lg-3 col-xs-12">
 

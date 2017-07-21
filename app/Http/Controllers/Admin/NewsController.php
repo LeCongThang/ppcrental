@@ -41,7 +41,7 @@ class NewsController extends Controller
 
             $destinationPath = public_path('images/news');
             $img = Image::make($image->getRealPath());
-            $img->insert(public_path('images/common_icon/footer-logo.png'), 'bottom-right', 50, 250)
+            $img->insert(public_path('images/common_icon/footer-logo.png'), 'bottom-right', 50, 50)
                 ->resize(750, 500, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $filename);
@@ -84,8 +84,8 @@ class NewsController extends Controller
 
             $destinationPath = public_path('images/news');
             $img = Image::make($image->getRealPath());
-            $img->insert(public_path('images/common_icon/footer-logo.png'), 'bottom-right', 5, 5)
-                ->resize(180, 236, function ($constraint) {
+            $img->insert(public_path('images/common_icon/footer-logo.png'), 'bottom-right', 50, 50)
+                ->resize(750, 500, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $filename);
             if (file_exists('images/news/' . $oldfile)) {
