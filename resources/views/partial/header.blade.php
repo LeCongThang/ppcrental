@@ -26,15 +26,21 @@
                 </li>
                 <li><a href="{{URL::asset('')}}favorite.html"><span class="glyphicon glyphicon-heart"></span>
                         Favorites</a></li>
-                <li>
+                <li class="dropdown">
                     @if(\Illuminate\Support\Facades\Session::get('agent_id')==null)
                         <span class="glyphicon glyphicon-user"></span> <a class="signin"
                                                                           href="{{URL::asset('')}}sign-in.html">Sign
                             in</a>/
                         <a class="signup" href="{{URL::asset('')}}sign-up.html">Sign up</a>
                     @else
-                        <span class="glyphicon glyphicon-user"></span> <a  href="{{URL::asset('')}}ppcrental-search.html">{{\Illuminate\Support\Facades\Session::get('agentname')}}</a>
-
+                        <span class="glyphicon glyphicon-user"></span> <a
+                                class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false"
+                                href="">{{\Illuminate\Support\Facades\Session::get('agentname')}}</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{URL::asset('')}}/profile-{{\Illuminate\Support\Facades\Session::get('agent_id')}}">Profile</a></li>
+                            <li><a href="{{URL::asset('')}}log-out"> Logout</a></li>
+                        </ul>
                     @endif
                 </li>
                 <li>
@@ -70,7 +76,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{URL::asset('')}}for-agent.html">For Agent</a>
+                    <a @if(\Illuminate\Support\Facades\Session::get('agent_id')!=null) href="{{URL::asset('')}}for-agent.html" @else
+                    class="signin" href="{{URL::asset('')}}sign-in.html"
+                    @endif>For Agent</a>
                 </li>
                 <li>
                     <a href="{{URL::asset('')}}about-ppcrental.html">About us</a>

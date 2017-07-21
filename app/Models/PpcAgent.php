@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 21 Jul 2017 04:02:48 +0000.
+ * Date: Fri, 21 Jul 2017 08:50:47 +0000.
  */
 
 namespace App\Models;
@@ -14,11 +14,12 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $username
- * @property int $password
- * @property int $fullname
+ * @property string $password
+ * @property string $fullname
  * @property string $email
  * @property string $phone
  * @property string $address
+ * @property bool $status
  *
  * @package App\Models
  */
@@ -28,8 +29,7 @@ class PpcAgent extends Eloquent
 	public $timestamps = false;
 
 	protected $casts = [
-		'password' => 'int',
-		'fullname' => 'int'
+		'status' => 'bool'
 	];
 
 	protected $hidden = [
@@ -42,6 +42,7 @@ class PpcAgent extends Eloquent
 		'fullname',
 		'email',
 		'phone',
-		'address'
+		'address',
+		'status'
 	];
 }

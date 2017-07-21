@@ -14,7 +14,7 @@
                 </button>
                 <h4 class="modal-title" id="myModalLabel">Sign up</h4>
             </div>
-            <form action="{{URL::asset('')}}/admin/create-language" method="post">
+            <form action="{{URL::asset('')}}register" method="post">
                 <div class="modal-body">
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

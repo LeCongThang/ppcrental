@@ -43,7 +43,7 @@ class PropertyController extends Controller
         $id_array = explode(",", $id);
 //       dd($idarray);
         $p = PpcProperty::whereIn("id", $id_array)->get();
-        dd($p->name);
+//        dd($p);
         return view('property', ['items' => $p]);
     }
 
