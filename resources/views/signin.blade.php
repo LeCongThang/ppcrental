@@ -14,7 +14,7 @@
                 <button type="button" style="color: white" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Sign in</h4>
+                <h4 class="modal-title" id="myModalLabel">{{trans('home.signin')}}</h4>
             </div>
             <form action="{{URL::asset('')}}login" method="post">
                 <div class="modal-body">
@@ -26,16 +26,19 @@
                     <div class="form-group">
                         <input class="form-control" type="password" name="password" placeholder="Password" required/>
                     </div>
-                    <div class="form-group">
-                        <a href="">Forgot password?</a><br>
-                        <a href="">Don't have account?</a>
+                    <div class="form-group" style="height: 40px">
+                        <div class="col-lg-9">
+                            <a href="">{{trans('home.forgot')}}</a><br>
+                            <a href="">{{trans('home.donthave')}}</a>
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="submit" value="{{trans('home.signin')}}" class="btn search-form"/>
+                        </div>
                     </div>
 
+
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" value="Sign up" class="btn search-form"/>
-                </div>
+
             </form>
         </div>
     </div>

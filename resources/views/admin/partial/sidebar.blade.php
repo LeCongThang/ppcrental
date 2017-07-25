@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>ADMIN</span></a>
+            <a href="{{URL::asset('')}}admin" class="site_title"><i class="fa fa-paw"></i> <span>ADMIN</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -25,20 +25,11 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-
-                            <li><a href="{{URL::asset('')}}admin">Dashboard</a></li>
-                            <li><a href="{{URL::asset('')}}admin/district-in-homepage">District in homepage</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li><a><i class="fa fa-table"></i> Properties <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-table"></i> Property management <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{URL::asset('')}}admin/new-property">Add new property</a></li>
-                            <li><a href="{{URL::asset('')}}admin/properties-management">List properties</a></li>
-                            <li><a href="{{URL::asset('')}}admin/status-feature-property">Status and Feature</a></li>
+                            <li><a href="{{URL::asset('')}}admin">List of property</a></li>
+                            <li><a href="{{URL::asset('')}}admin/status-feature-property">List of Feature</a></li>
                         </ul>
                     </li>
                     {{--<li><a href="{{URL::asset('')}}admin/menu-management"><i class="fa fa-bug"></i> Menu management</a>--}}

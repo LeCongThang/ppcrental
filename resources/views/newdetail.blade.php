@@ -27,7 +27,7 @@
         <!--</li>-->
         <!--</ul>-->
         <div class="home-below-menu">
-            <h2>NEWS</h2>
+            <h2>{{trans('home.news')}}</h2>
         </div>
 
 
@@ -43,13 +43,23 @@
                 <div class="col-md-9">
                     <div class="panel panel-custom">
                         <div class="panel-body panel-body-custom">
-                            <h3>{{$news->title_en}}</h3>
+                            <h3>
+                                @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+                                    {{$news->title_en}}
+                                @else
+                                    {{$news->title}}
+                                @endif</h3>
                             <i style="font-weight:normal">{{$news->updated_at}}</i>
                             <img src="{{URL::asset('')}}images/news/{{$news->image}}" class="img-responsive">
-                            {!! $news->content_en !!}
+                            @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+                                {!! $news->content_en !!}
+                            @else
+                                {!! $news->content !!}
+                            @endif
+
                             <a class="btn search-form" href="#" onclick="share_fb('{{URL::asset('')}}/news/{{$news->id}}-{{$news->slug_en}}.html');return false;" rel="nofollow"
                                share_url="{{URL::asset('')}}/news/{{$news->id}}-{{$news->slug_en}}.html" target="_blank">
-                                <i class="fa fa-facebook" aria-hidden="true"></i> Share
+                                <i class="fa fa-facebook" aria-hidden="true"></i> {{trans('home.share')}}
                             </a>
 
                         </div>

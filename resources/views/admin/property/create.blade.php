@@ -118,12 +118,12 @@
                                 </div>
                                 <label class="control-label col-lg-2">Contact:</label>
                                 <div class="col-lg-2">
-                                    <select name="saler_id" class="form-control selectpicker"
+                                    <select name="unit" class="form-control selectpicker"
                                             data-live-search="true"
                                             title="--Choose--" required>
-                                        @foreach($user as $item)
-                                            <option value="{{$item->id}}">{{$item->fullname}}</option>
-                                        @endforeach
+                                            <option value="0">USD</option>
+                                            <option value="1">VND</option>
+
                                     </select>
                                 </div>
 

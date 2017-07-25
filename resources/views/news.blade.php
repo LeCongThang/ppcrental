@@ -18,7 +18,7 @@
         <!--</li>-->
         <!--</ul>-->
         <div class="home-below-menu">
-            <h2>NEWS</h2>
+            <h2>{{trans('home.news')}}</h2>
         </div>
 
 
@@ -37,14 +37,27 @@
                             @foreach($news as $item)
                                 <div class="newspage">
                                     <h3>
-                                        <a href="{{URL::asset('')}}news/{{$item->id}}-{{$item->slug}}.html">{{$item->title_en}}</a>
+                                        <a class="mauxanh" href="{{URL::asset('')}}news/{{$item->id}}-{{$item->slug}}.html">
+                                            @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+                                            {{$item->title_en}}
+                                        @else
+                                                {{$item->title}}
+                                            @endif
+                                        </a>
                                     </h3>
                                     <i style="font-weight: normal;">{{\App\Models\PpcUser::find($item->author_id)->fullname}}
                                         - {{$item->updated_at}}</i>
                                     <img src="{{URL::asset('')}}images/news/{{$item->image}}" class="img-responsive">
-                                    <p>{!! $item->content_en !!}</p>
+                                    <p>
+                                        @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+                                            {!! str_limit($item->content_en,300) !!}
+                                        @else
+                                            {!! str_limit($item->content,300) !!}
+                                        @endif
+
+                                    </p>
                                     <a href="{{URL::asset('')}}news/{{$item->id}}-{{$item->slug}}.html"
-                                       class="btn search-form">Read more</a>
+                                       class="btn search-form">{{trans('home.readmore')}}</a>
 
                                 </div>
                                 <hr>

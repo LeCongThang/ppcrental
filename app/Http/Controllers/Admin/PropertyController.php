@@ -18,6 +18,7 @@ use App\Models\PpcProvince;
 use App\Models\PpcUser;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Session;
 use Image;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,9 @@ class PropertyController extends Controller
         $property->slug = str_slug($request->get('name_en'));
         $property->slug_en = str_slug($request->get('name_en'));
         $property->price = $request->get('price');
-        $property->saler_id = $request->get('saler_id');
+        $property->saler_id = Session::get('user_id');
+        $property->unit = Session::get('unit');
+        $property->saler_id = Session::get('user_id');
         $property->description = $request->get('description');
         $property->description_en = $request->get('description_en');
         $property->district = $request->get('district');
@@ -123,7 +126,8 @@ class PropertyController extends Controller
         $property->slug = str_slug($request->get('name_en'));
         $property->slug_en = str_slug($request->get('name_en'));
         $property->price = $request->get('price');
-        $property->saler_id = $request->get('saler_id');
+        $property->unit = $request->get('unit');
+        $property->saler_id = Session::get('user_id');
         $property->description = $request->get('description');
         $property->description_en = $request->get('description_en');
         if ($request->get('district') != null) {

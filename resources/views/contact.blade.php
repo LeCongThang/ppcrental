@@ -18,7 +18,7 @@
         <!--</li>-->
         <!--</ul>-->
         <div class="home-below-menu">
-            <h2>CONTACT</h2>
+            <h2>{{trans('home.contact')}}</h2>
         </div>
 
 
@@ -35,35 +35,45 @@
                     <div class="panel panel-custom">
                         <div class="panel-body panel-body-custom">
                             <div class="col-lg-5">
-                                <h5>Send us an email or a message on Facebook and an agent will be in touch within 24 hours</h5>
-                                <form class="form-horizontal" action="" method="post">
+                                <h5>{{trans('home.sendus')}}</h5>
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                @endif
+                                <form class="form-horizontal" action="{{URL::asset('')}}send-message" method="post">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Name" name="name" required/>
+                                        <input class="form-control" type="text" placeholder="{{trans('home.name')}}" name="name" required/>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="email" placeholder="Email" name="email" required/>
+                                        <input class="form-control" type="email" placeholder="{{trans('home.email')}}" name="email" required/>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Phone number" name="phone" required/>
+                                        <input class="form-control" type="text" placeholder="{{trans('home.office')}}" name="phone" required/>
                                     </div>
                                     <div class="form-group">
-                                        <textarea class="form-control" required placeholder="Message" rows="8" name="message"></textarea>
+                                        <textarea class="form-control" required placeholder="{{trans('home.message')}}" rows="8" name="message"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="search-form btn pull-right">Send message</button>
+                                        <button type="submit" class="search-form btn pull-right">{{trans('home.send')}}</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="col-lg-6 col-lg-offset-1">
-                                <h5>Where to find us</h5>
-                                <div id="map" style="width:auto;height:330px;background:yellow"></div>
+                                <h5>{{trans('home.where')}}</h5>
+                                <div id="map" style="width:auto;height:330px;">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5748836249945!2d106.68554931435033!3d10.767209992327771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f181c80d37b%3A0x11f037e825f6300e!2zMjQ0IEPhu5FuZyBRdeG7s25oLCBQaOG6oW0gTmfFqSBMw6NvLCBRdeG6rW4gMSwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1500948377295" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </div>
 
-                                <h5>Contact</h5>
-                                <p>3rd floor, Jabes 1, 244 Cong Quynh street, Pham Ngu Lao ward, District 1, Ho Chi Minh city.</p>
-
-                                <p>Phone: 028 22 532 489</p>
-
-                                <p>Hotline: 0168 7443 002</p>
+                                <h5>{{trans('home.contact')}}</h5>
+                                @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+                                {!! $info->vietnam_address_en !!}
+                                    @else
+                                    {!! $info->vietnam_address !!}
+                                @endif
                             </div>
 
                         </div>
@@ -72,16 +82,4 @@
             </div>
         </div>
     </div>
-    <script>
-        function myMap() {
-            var mapOptions = {
-                center: new google.maps.LatLng(51.5, -0.12),
-                zoom: 10,
-                mapTypeId: google.maps.MapTypeId.HYBRID
-            }
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        }
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
 @endsection

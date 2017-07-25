@@ -129,14 +129,14 @@
                                 </div>
                                 <label class="control-label col-lg-2">Contact:</label>
                                 <div class="col-lg-2">
-                                    <select name="saler_id" class="form-control selectpicker"
-                                            data-live-search="true"
-                                            title="--Choose--" required>
-                                        @foreach($user as $item)
-                                            <option value="{{$item->id}}"
-                                                    @if($property->saler_id==$item->id) selected @endif>{{$item->fullname}}</option>
-                                        @endforeach
-                                    </select>
+                                        <select name="unit" class="form-control selectpicker"
+                                                data-live-search="true"
+                                                title="--Choose--" required>
+                                            <option @if($property->unit==0) selected @endif value="0">USD</option>
+                                            <option @if($property->unit==1) selected @endif value="1">VND</option>
+
+                                        </select>
+
                                 </div>
 
                             </div>

@@ -14,8 +14,11 @@
                 <h4><strong style="color: #342315;">Perfect Property Company, VietNam</strong></h4>
 
                 <hr style="color: #342315; border-bottom: 3px solid #342315"/>
-
+@if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                 {!! $info->vietnam_address_en !!}
+    @else
+                    {!! $info->vietnam_address !!}
+                @endif
             </div>
             <div class="col-lg-4 wow fadeInRight" data-wow-duration="1.5s">
                 <h4><strong style="color: #342315;">Perfect Property Company, USA</strong></h4>

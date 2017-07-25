@@ -18,7 +18,7 @@
         <!--</li>-->
         <!--</ul>-->
         <div class="home-below-menu">
-            <h2>ABOUT US</h2>
+            <h2>{{trans('home.aboutus')}}</h2>
         </div>
 
 
@@ -34,15 +34,34 @@
                 <div class="col-md-12">
                     <div class="panel panel-custom">
                         <div class="panel-body panel-body-custom">
+                            @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                             {!! $about->intro_en !!}
+                            @else
+                                {!! $about->intro !!}
+                                @endif
                             <div class="col-lg-4">
-                                {!! $about->about_en !!}
+                                @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+                                    {!! $about->about_en !!}
+                                @else
+                                    {!! $about->about !!}
+                                @endif
+
                             </div>
                             <div class="col-lg-4">
-                                {!! $about->ourteam_en !!}
+                                @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+                                    {!! $about->ourteam_en !!}
+                                @else
+                                    {!! $about->ourteam_en !!}
+                                @endif
+
                             </div>
                             <div class="col-lg-4">
-                                {!! $about->ceo_en !!}
+                                @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+                                    {!! $about->ceo_en !!}
+                                @else
+                                    {!! $about->ceo_en !!}
+                                @endif
+
                             </div>
                             <hr/>
 

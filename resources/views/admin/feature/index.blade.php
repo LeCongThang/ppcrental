@@ -8,7 +8,7 @@
 
                 <div class="row x_title">
                     <div class="col-md-6">
-                        <h3>Property feature and status
+                        <h3>Property feature
                             {{--<small>Graph title sub-title</small>--}}
                         </h3>
                     </div>

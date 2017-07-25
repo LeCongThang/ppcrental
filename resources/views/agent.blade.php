@@ -17,8 +17,9 @@
         <!--<a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>-->
         <!--</li>-->
         <!--</ul>-->
-        <div class="home-below-menu"style="background: url('{{URL::asset('images/common_icon/title-bg.jpg')}}') no-repeat center center;background-size: cover;">
-            <h2>FOR AGENT</h2>
+        <div class="home-below-menu"
+             style="background: url('{{URL::asset('images/common_icon/title-bg.jpg')}}') no-repeat center center;background-size: cover;">
+            <h2>{{trans('home.foragent')}}</h2>
         </div>
 
 
@@ -34,158 +35,182 @@
                 <div class="col-md-9">
                     <div class="panel panel-custom">
                         <div class="panel-body panel-body-custom">
-                            <div class="newspage">
-                                <h3>Thông tin cơ bản</h3>
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @endif
+                            <div class="col-md-12">
+                                <form class="form-horizontal" action="{{URL::asset('')}}post-property"
+                                      method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2">Image:</label>
+                                            <div class="col-lg-2">
+                                                <input class="form-control" type="file" name="image_overall" required
+                                                       onchange="loadFile(event)"/>
+                                                <img id="output" width="80%"/>
+                                            </div>
+                                            <label class="control-label col-lg-2">Property type:</label>
+                                            <div class="col-lg-2">
+                                                <select name="property_type" class="form-control">
+                                                    @foreach($type as $i)
+                                                        <option value="{{$i->id}}"
+                                                                style="font-weight: bold;">{{$i->name_en}}</option>
+                                                        <?php
+                                                        $items = DB::table('ppc_property_category')->where('parent_id', $i->id)->get();
+                                                        ?>
+                                                        @foreach($items as $item)
+                                                            <option value="{{$item->id}}">-- {{$item->name_en}}</option>
+                                                        @endforeach
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-lg-2">Property status:</label>
+                                            <div class="col-lg-2">
+                                                <select name="property_status" class="form-control">
+                                                    <option value="0">For Rent</option>
+                                                    <option value="1">For Sale</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2">Content:</label>
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a data-toggle="tab" href="#home">Vietnamese</a></li>
+                                                <li><a data-toggle="tab" href="#menu2">English</a></li>
+                                            </ul>
 
+                                            <div class="tab-content col-lg-12">
+                                                <div id="home" class="tab-pane fade in active">
+                                                    <label class="control-label">Property name (vi):</label>
+                                                    <input type="text" class="form-control" name="name" required/>
+                                                    <label class="control-label">Content (vi):</label>
+                                                    <textarea rows="8" class="form-control" name="descriptions"
+                                                              required></textarea>
 
+                                                </div>
+
+                                                <div id="menu2" class="tab-pane fade">
+                                                    <label class="control-label">Property name (en):</label>
+                                                    <input type="text" class="form-control" name="name_en" required/>
+                                                    <label class="control-label">Content (en):</label>
+                                                    <textarea rows="8" class="form-control" name="descriptions_en"
+                                                              required></textarea>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2">City:</label>
+                                            <div class="col-lg-2">
+                                                <select name="province" id="province" class="form-control selectpicker"
+                                                        data-live-search="true"
+                                                        title="--Choose--"
+                                                        onchange="loaddistrict();" required>
+                                                    @foreach($province as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-lg-2"><span
+                                                        class="glyphicon glyphicon-arrow-right"></span>
+                                                District:</label>
+                                            <div class="col-lg-2">
+                                                <select name="district" id="district" class="form-control"
+                                                        onchange="loadward()" required>
+
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-lg-2"><span
+                                                        class="glyphicon glyphicon-arrow-right"></span> Ward:</label>
+                                            <div class="col-lg-2">
+                                                <select name="ward" id="ward" class="form-control" onchange="getward()"
+                                                        required>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2">Street:</label>
+                                            <div class="col-lg-2">
+                                                <select name="street" id="street" class="form-control"
+                                                        onchange="getstreet()">
+
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-lg-2">Price:</label>
+                                            <div class="col-lg-2">
+                                                <input type="text" class="form-control" name="price"
+                                                       placeholder="ex: $300/spm/month" required/>
+                                            </div>
+                                            <label class="control-label col-lg-2">Unit:</label>
+                                            <div class="col-lg-2">
+                                                <select name="unit" class="form-control selectpicker"
+                                                        data-live-search="true"
+                                                        title="--Choose--" required>
+                                                    <option value="0">USD</option>
+                                                    <option value="1">VND</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2">Area:</label>
+                                            <div class="col-lg-10">
+                                                <input type="text" class="form-control" id="area" name="area" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2">Bed room:</label>
+                                            <div class="col-lg-2">
+                                                <input type="number" class="form-control" value="1" min="0"
+                                                       name="bedroom"
+                                                       required/>
+                                            </div>
+                                            <label class="control-label col-lg-2">Bath room:</label>
+                                            <div class="col-lg-2">
+                                                <input type="number" class="form-control" value="1" min="0"
+                                                       name="bathroom"
+                                                       required/>
+                                            </div>
+                                            <label class="control-label col-lg-2">Parking place:</label>
+                                            <div class="col-lg-2">
+                                                <input type="number" class="form-control" value="1" min="0"
+                                                       name="parkingplace"
+                                                       required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2">Feature:</label>
+                                            <div class="col-lg-6">
+                                                @foreach($feature as $i)
+                                                    <input type="checkbox" value="{{$i->id}}"
+                                                           name="feature{{$i->id}}"/> {{$i->feature_en}}
+                                                    &nbsp;&nbsp;
+                                                @endforeach
+
+                                            </div>
+                                            <label class="control-label col-lg-2">Area:</label>
+                                            <div class="col-lg-2">
+                                                <input type="text" class="form-control" name="location"
+                                                       placeholder="ex: 30-50 sqm" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 col-lg-offset-2">
+                                            <br/>
+                                            <button type="reset" class="btn btn-default">Cancel</button>
+                                            <button type="submit" class="btn btn-success">Post</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <hr>
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Property type</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Property status</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">City</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">District</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Ward</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Address</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Project</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Area</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Price</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Currency</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Description</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" rows="8"></textarea>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <h4>Thông tin khác</h4>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Mặt tiền(m)</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Đường vào(m)</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Hướng nhà</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Hướng ban công</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option>Choose</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Floor</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Bedrooms</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Bathrooms</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Service</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
-                                    </div>
-                                </div>
-                                <hr/>
-                                <h4>Upload images</h4>
-                                <hr/>
-                                <button type="submit" class="btn search-form">Post project</button>
-                            </form>
+                            <div class="clearfix"></div>
 
                         </div>
                     </div>
@@ -195,8 +220,108 @@
         </div>
     </div>
     <style>
-        .form-group label{
+        .form-group label {
             text-align: left !important;
         }
     </style>
+@endsection
+@section('scripts')
+    <script>
+        var loadFile = function (event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('output');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
+    </script>
+    <script src="{{URL::asset('')}}ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('descriptions', {
+            filebrowserBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=Properties',
+            filebrowserUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Properties'
+        });
+        CKEDITOR.replace('descriptions_en', {
+            filebrowserBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=Properties',
+            filebrowserUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Properties'
+        });
+    </script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+    <script>
+        function loaddistrict() {
+            var province = $('#province').val();
+            $('#area').val($("#province :selected").text());
+            $('#district').children().remove();
+            $.ajax({
+                type: "GET",
+                url: "{{URL::asset('')}}admin/load-district-" + province,
+
+                success: function (data) {
+                    var JSONObject = $.parseJSON(data);
+                    if (JSONObject != null) {
+                        for (var i = 0; i < JSONObject.length; i++) {
+                            var string = '<option value="' + JSONObject[i]["id"] + '">' + JSONObject[i]["name"] + '</option>';
+                            $('#district').append(string);
+                        }
+                    }
+
+                }
+            });
+        };
+        function loadward() {
+            var district = $('#district').val();
+            $('#area').val($("#district :selected").text() + ", " + $("#province :selected").text());
+            $('#ward').children().remove();
+            $('#street').children().remove();
+            $.ajax({
+                type: "GET",
+                url: "{{URL::asset('')}}admin/load-ward-" + district,
+
+                success: function (data) {
+                    var JSONObject = $.parseJSON(data);
+                    if (JSONObject != null) {
+                        for (var i = 0; i < JSONObject.length; i++) {
+                            var string = '<option value="' + JSONObject[i]["id"] + '">' + JSONObject[i]["name"] + '</option>';
+                            $('#ward').append(string);
+                        }
+
+                    }
+
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: "{{URL::asset('')}}admin/load-street-" + district,
+
+                success: function (data) {
+                    var JSONObject = $.parseJSON(data);
+                    if (JSONObject != null) {
+                        for (var i = 0; i < JSONObject.length; i++) {
+                            var string = '<option value="' + JSONObject[i]["id"] + '">' + JSONObject[i]["name"] + '</option>';
+                            $('#street').append(string);
+                        }
+
+                    }
+
+                }
+            });
+        };
+        function getward() {
+            $('#area').val($("#ward :selected").text() + ", " + $("#district :selected").text() + ", " + $("#province :selected").text());
+        };
+        function getstreet() {
+            //var area = $('#area').val();
+            $('#area').val($("#street :selected").text() + ", " + $("#ward :selected").text() + ", " + $("#district :selected").text() + ", " + $("#province :selected").text());
+        }
+
+    </script>
 @endsection

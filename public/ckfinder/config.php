@@ -33,7 +33,7 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'PPC Rental';
+$config['licenseName'] = $_SERVER['HTTP_HOST'];
 $config['licenseKey'] = '3FUF5M7F26U953QE2QR3HDAWKD8MG';
 
 /*============================ CKFinder Internal Directory ============================*/
@@ -51,30 +51,27 @@ $config['privateDir'] = array(
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_images
 
 $config['images'] = array(
-    'maxWidth'  => 1000,
-    'maxHeight' => 800,
+    'maxWidth'  => 700,
+    'maxHeight' => 700,
     'quality'   => 80,
     'sizes' => array(
-        'small'  => array('width' => 480, 'height' => 320, 'quality' => 80),
-        'medium' => array('width' => 600, 'height' => 480, 'quality' => 80),
-        'large'  => array('width' => 1000, 'height' => 800, 'quality' => 80)
+        'small'  => array('width' => 400, 'height' => 400, 'quality' => 80),
+        'medium' => array('width' => 500, 'height' => 500, 'quality' => 80),
+        'large'  => array('width' => 700, 'height' => 700, 'quality' => 100)
     )
 );
-if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/user/'){
-    $config['Images']['maxWidth'] = 60;
-    $config['Images']['maxHeight'] = 60;
+
+if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/about/'){
+    $config['About']['maxWidth'] = 700;
+    $config['About']['maxHeight'] = 700;
 }
 if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/news/'){
-    $config['News']['maxWidth'] = 800;
+    $config['News']['maxWidth'] = 600;
     $config['News']['maxHeight'] = 600;
 }
 if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/project/'){
-    $config['Properties']['maxWidth'] = 800;
+    $config['Properties']['maxWidth'] = 600;
     $config['Properties']['maxHeight'] = 600;
-}
-if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/about/'){
-    $config['About']['maxWidth'] = 1000;
-    $config['About']['maxHeight'] = 800;
 }
 /*=================================== Backends ========================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_backends
@@ -82,7 +79,7 @@ if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/image
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl' => 'http://' . $_SERVER['SERVER_NAME'] . ':81/www/ppcrental/public/',
+    'baseUrl' => 'http://' . $_SERVER['SERVER_NAME'],
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
@@ -135,6 +132,15 @@ $config['resourceTypes'][] = array(
     'deniedExtensions'  => '',
     'backend'           => 'default'
 );
+$config['resourceTypes'][] = array(
+    'name'              => 'Agent',
+    'directory'         => 'images',
+    'maxSize'           => 0,
+    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+    'deniedExtensions'  => '',
+    'backend'           => 'default'
+);
+
 /*================================ Access Control =====================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_roleSessionVar
 

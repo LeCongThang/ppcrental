@@ -58,8 +58,8 @@ class UserController extends Controller
             $filename = 'user-' . time() . '.jpg';
             $destinationPath = public_path('images/users');
             $img = Image::make($image->getRealPath());
-            $img->resize(60, 60, function ($constraint) {
-                $constraint->aspectRatio();
+            $img->circle(70, 150, 100, function ($draw) {
+                $draw->border(1, '#ffffff');
             })->save($destinationPath . '/' . $filename);
             $user->avatar = $filename;
         } else {
@@ -103,25 +103,72 @@ class UserController extends Controller
                 $up->permission_id = $i->id;
                 $up->save();
             } else if ($request->get('permission' . $i->id) == null && $userp != null) {
-                $up = PpcUserPermission::where('user_id',$id)->where('permission_id',$i->id)->first();
+                $up = PpcUserPermission::where('user_id', $id)->where('permission_id', $i->id)->first();
                 $up->delete();
             }
         }
         return redirect('/admin/user-management ')->with('success', 'Updated successfully');
     }
-    public function ResetPassword($id){
+
+    public function ResetPassword($id)
+    {
         $user = PpcUser::find($id);
-        $user->password='PpcRental@' . date('Y');
+        $user->password = 'PpcRental@' . date('Y');
         $user->save();
-        return redirect('/admin/user-management')->with('success','Reset success');
+        return redirect('/admin/user-management')->with('success', 'Reset success');
     }
-    public function Delete($id){
+
+    public function Delete($id)
+    {
         $user = PpcUser::find($id);
-        return view('admin.user.delete',['user'=>$user]);
+        return view('admin.user.delete', ['user' => $user]);
     }
-    public function Remove($id){
-        PpcUserPermission::where('user_id',$id)->delete();
+
+    public function Remove($id)
+    {
+        PpcUserPermission::where('user_id', $id)->delete();
         PpcUser::find($id)->delete();
-        return redirect('/admin/user-management')->with('success','Deleted successfully');
+        return redirect('/admin/user-management')->with('success', 'Deleted successfully');
+    }
+
+    public function EditProfile($id)
+    {
+        $user = PpcUser::find($id);
+        if ($user != null) {
+            return view('admin.user.editprofile', ['user' => $user]);
+        }
+
+    }
+
+    public function UpdateProfile(Request $request, $id)
+    {
+        $user = PpcUser::find($id);
+        $user->email = $request->get('email');
+        $user->username = $request->get('username');
+        $user->fullname = $request->get('fullname');
+        $user->phone = $request->get('phone');
+        $user->office_phone = $request->get('office_phone');
+        $user->address = $request->get('address');
+        $user->address_en = $request->get('address_en');
+        $user->updated_at = Carbon::now();
+        if ($request->get('password') != null) {
+            $user->password = $request->get('password');
+        }
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $filename = 'user-' . time() . '.jpg';
+            $destinationPath = public_path('images/users');
+            $img = Image::make($image->getRealPath());
+            $img->circle(70, 150, 100, function ($draw) {
+                $draw->border(1, '#ffffff');
+            })->save($destinationPath . '/' . $filename);
+            if (file_exists('images/users/' . $user->avatar)) {
+                unlink('images/users/' . $user->avatar);
+            }
+            $user->avatar = $filename;
+
+        }
+        $user->save();
+        return redirect()->back()->with('success', 'Updated successfully!');
     }
 }

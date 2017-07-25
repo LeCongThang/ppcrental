@@ -33,7 +33,7 @@
 .grid figure img {
     position: relative;
     display: block;
-    min-height: 100%;
+    height: auto;
     max-width: 100%;
     opacity: 0.8;
 }
@@ -980,9 +980,9 @@ figure.effect-sarah:hover p {
 figure.effect-zoe figcaption {
     top: auto;
     bottom: 0;
-    padding: 1em;
-    height: 3.75em;
-    background: #fff;
+    padding: 0.5em;
+    height: 3em;
+    background: rgba(47, 53, 61, 0.9);
     color: #3c4a50;
     -webkit-transition: -webkit-transform 0.35s;
     transition: transform 0.35s;
@@ -995,20 +995,22 @@ figure.effect-zoe h2 {
 }
 
 figure.effect-zoe p.icon-links a {
-    float: right;
-    color: #3c4a50;
-    font-size: 1.4em;
+    float: left;
+    /*color: white;*/
+    font-size: 2em;
+    padding-right: 20px;
 }
 
 figure.effect-zoe:hover p.icon-links a:hover,
 figure.effect-zoe:hover p.icon-links a:focus {
-    color: #252d31;
+    color: white;
+    transform: scale(1.5);
 }
 
 figure.effect-zoe p.description {
     position: absolute;
-    bottom: 8em;
-    padding: 2em;
+    bottom: 4em;
+    padding: 1em;
     color: #fff;
     text-transform: none;
     font-size: 90%;

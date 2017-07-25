@@ -37,8 +37,8 @@ class SliderController extends Controller
 
             $destinationPath = public_path('images/slider');
             $img = Image::make($image->getRealPath());
-            $img->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 250)
-                ->resize(1349, 663, function ($constraint) {
+            $img->insert(public_path('images/common_icon/logo.png'), 'bottom-left', 50, 250)
+                ->resize(1920, 1080, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($destinationPath . '/' . $filename);
             $slider = new PpcSlider();
@@ -77,7 +77,7 @@ class SliderController extends Controller
                 $destinationPath = public_path('images/slider');
                 $img = Image::make($image->getRealPath());
                 $img->insert(public_path('images/common_icon/logo.png'), 'bottom-right', 50, 250)
-                    ->resize(1349, 663, function ($constraint) {
+                    ->resize(1920, 1080, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($destinationPath . '/' . $filename);
                 if(file_exists('images/slider/' . $oldfile)){

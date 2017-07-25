@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 21 Jul 2017 08:50:47 +0000.
+ * Date: Tue, 25 Jul 2017 03:25:08 +0000.
  */
 
 namespace App\Models;
@@ -17,6 +17,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $name
  * @property string $name_en
  * @property string $price
+ * @property bool $unit
  * @property string $description
  * @property string $description_en
  * @property string $slug
@@ -46,6 +47,7 @@ class PpcProperty extends Eloquent
 
 	protected $casts = [
 		'status' => 'bool',
+		'unit' => 'bool',
 		'property_status' => 'int',
 		'property_type' => 'int',
 		'bedroom' => 'int',
@@ -60,6 +62,7 @@ class PpcProperty extends Eloquent
 		'name',
 		'name_en',
 		'price',
+		'unit',
 		'description',
 		'description_en',
 		'slug',
