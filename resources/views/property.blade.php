@@ -1,22 +1,26 @@
 @extends('layout.userlayout')
+@section('title')
+    @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+        PROPERTIES -
+    @else
+        DỰ ÁN -
+    @endif
+    {{$info->title}}
+@endsection
+@section('des')
+    {{$info->title}}, {{$info->description}}
+@endsection
+@section('keywords')
+    {{$info->title}}, {{$info->seokeyword}}
+@endsection
+@section('author')
+    {{$info->author}}
+@endsection
+@section('image')https://ppcrentals.com/images/common_icon/logo.png
+@endsection
 @section('content')
     <div class="intro-header">
 
-
-        <!--<h1>Landing Page</h1>-->
-        <!--<h3>A Template by Start Bootstrap</h3>-->
-        <!--<hr class="intro-divider">-->
-        <!--<ul class="list-inline intro-social-buttons">-->
-        <!--<li>-->
-        <!--<a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>-->
-        <!--</li>-->
-        <!--</ul>-->
         <div class="home-below-menu"
              style="background: url('{{URL::asset('images/common_icon/title-bg.jpg')}}') no-repeat center center;background-size: cover;">
             <h2>{{trans('home.result')}}</h2>
@@ -53,11 +57,11 @@
                             @if($items->count()>0)
                                 @foreach($items as $i)
 
-                                    <div class="col-lg-4">
+                                    <div class="col-md-4 col-sm-6">
                                         <a href="{{URL::asset('')}}property/{{$i->id}}-{{$i->slug}}.html"><img
                                                     src="{{URL::asset('')}}images/project/{{$i->image_overall}}"
                                                     class="img-responsive"></a>
-                                        <h4><a class="mauxanh" href="{{URL::asset('')}}property/{{$i->id}}-{{$i->slug}}.html">
+                                        <h4><a href="{{URL::asset('')}}property/{{$i->id}}-{{$i->slug}}.html">
                                                 @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                                     {{$i->name_en}}
                                                 @else

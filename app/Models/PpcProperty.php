@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 25 Jul 2017 03:25:08 +0000.
+ * Date: Wed, 26 Jul 2017 06:01:33 +0000.
  */
 
 namespace App\Models;
@@ -23,6 +23,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $slug
  * @property string $slug_en
  * @property string $image_overall
+ * @property string $thumb
  * @property int $property_status
  * @property int $property_type
  * @property string $location
@@ -68,6 +69,7 @@ class PpcProperty extends Eloquent
 		'slug',
 		'slug_en',
 		'image_overall',
+		'thumb',
 		'property_status',
 		'property_type',
 		'location',

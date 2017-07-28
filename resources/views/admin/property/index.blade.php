@@ -20,7 +20,7 @@
                     </div>
                 @endif
                 <div class="col-md-12">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered tblpro">
                         <thead>
                         <tr>
                             <th>No.</th>
@@ -30,6 +30,7 @@
                             <th>Location</th>
                             <th>Area</th>
                             <th>Status</th>
+                            <th>Posted by</th>
                             <th>Action</th>
 
                         </tr>
@@ -49,7 +50,12 @@
                                         <label class="text-success"><i class="fa fa-check-circle"></i></label>
                                     @endif
                                 </td>
-
+                                <td>@if(\App\Models\PpcUser::find($item->saler_id)->user_type==0)
+                                        <label class="label label-info">Company</label>
+                                    @else
+                                        <label class="label label-success">Agent</label>
+                                    @endif
+                                </td>
 
                                 <td>
                                     <a href="{{URL::asset('')}}admin/edit-property-{{$item->id}}" class="btn btn-xs btn-primary">Edit</a>
@@ -94,5 +100,9 @@
                 }
             });
         })
+    </script>
+<script src="{{URL::asset('')}}js/jquery.dataTables.min.js"></script>
+    <script>
+        $('.tblpro').DataTable();
     </script>
 @endsection

@@ -16,7 +16,22 @@ class ContactsController extends Controller
 {
     public function Index()
     {
-        $contact = PpcContact::get();
+        $contact = PpcContact::orderBy('id','desc')->get();
         return view('admin.contact.contact',['contact'=>$contact]);
+    }
+    public function Seen($id){
+        $c = PpcContact::find($id);
+        if($c!=null){
+            $c->status=1;
+            $c->save();
+        }
+        return redirect('admin/contact-management')->with('success','Updated successfully!');
+    }
+    public function Delete($id){
+        $c = PpcContact::find($id);
+        if($c!=null){
+            $c->delete();
+        }
+        return redirect('admin/contact-management')->with('success','Deleted successfully!');
     }
 }

@@ -19,7 +19,7 @@
                     </div>
                 @endif
                 <div class="col-md-12">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered tblcon">
                         <thead>
                         <tr>
                             <th>No.</th>
@@ -28,6 +28,7 @@
                             <th>Phone</th>
                             <th>Message</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,14 +36,20 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$item->name}}</td>
-                                <td>{{$item->email}} <a href="" class="btn btn-xs btn-primary">Send mail</a> </td>
+                                <td>{{$item->email}} </td>
                                 <td>{{$item->phone}}</td>
                                 <td>{{$item->message}}</td>
                                 <td>@if($item->status==0)
                                         <label class="label label-danger">Waiting</label>
-                                        @else
-                                        <label class="label label-success">Answered</label>
+                                    @else
+                                        <label class="label label-success">Seen</label>
                                     @endif
+                                </td>
+                                <td>
+                                    @if($item->status==0)
+                                        <a href="{{URL::asset('')}}/admin/seen-contact-{{$item->id}}" class="btn btn-xs btn-success">Seen</a>
+                                    @endif
+                                    <a href="{{URL::asset('')}}/admin/delete-contact-{{$item->id}}" class="btn btn-xs btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -60,5 +67,8 @@
 
 @endsection
 @section('scripts')
-
+    <script src="{{URL::asset('')}}js/jquery.dataTables.min.js"></script>
+    <script>
+        $('.tblcon').DataTable();
+    </script>
 @endsection

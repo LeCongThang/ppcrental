@@ -53,6 +53,7 @@ class UserController extends Controller
         $user->updated_at = Carbon::now();
         $user->password = 'PpcRental@' . date('Y');
         $user->remember_token = '';
+        $user->user_type = '0';
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $filename = 'user-' . time() . '.jpg';

@@ -1,22 +1,26 @@
 @extends('layout.userlayout')
+@section('title')
+    @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+        FOR AGENT -
+    @else
+        ĐĂNG BÀI -
+    @endif
+    {{$info->title}}
+@endsection
+@section('des')
+    {{$info->title}}, {{$info->description}}
+@endsection
+@section('keywords')
+    {{$info->title}}, {{$info->seokeyword}}
+@endsection
+@section('author')
+    {{$info->author}}
+@endsection
+@section('image')
+    https://ppcrentals.com/images/common_icon/logo.png
+@endsection
 @section('content')
     <div class="intro-header">
-
-
-        <!--<h1>Landing Page</h1>-->
-        <!--<h3>A Template by Start Bootstrap</h3>-->
-        <!--<hr class="intro-divider">-->
-        <!--<ul class="list-inline intro-social-buttons">-->
-        <!--<li>-->
-        <!--<a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>-->
-        <!--</li>-->
-        <!--</ul>-->
         <div class="home-below-menu"
              style="background: url('{{URL::asset('images/common_icon/title-bg.jpg')}}') no-repeat center center;background-size: cover;">
             <h2>{{trans('home.foragent')}}</h2>
@@ -50,13 +54,19 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-2">Image:</label>
                                             <div class="col-lg-2">
-                                                <input class="form-control" type="file" name="image_overall" required
-                                                       onchange="loadFile(event)"/>
+                                                <div class="btn btn-info btn-md">
+                                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                                    <span>Choose</span>
+                                                    <input class="form-control" type="file" name="image_overall"
+                                                           required style="opacity: 0;position: absolute;top: 0;"
+                                                           onchange="loadFile(event)"/>
+                                                </div>
                                                 <img id="output" width="80%"/>
                                             </div>
                                             <label class="control-label col-lg-2">Property type:</label>
                                             <div class="col-lg-2">
-                                                <select name="property_type" class="form-control">
+                                                <select name="property_type" class="form-control selectpicker"
+                                                        data-live-search="true" data-size="6" title="Choose">
                                                     @foreach($type as $i)
                                                         <option value="{{$i->id}}"
                                                                 style="font-weight: bold;">{{$i->name_en}}</option>
@@ -71,7 +81,8 @@
                                             </div>
                                             <label class="control-label col-lg-2">Property status:</label>
                                             <div class="col-lg-2">
-                                                <select name="property_status" class="form-control">
+                                                <select name="property_status" class="form-control selectpicker"
+                                                        title="Choose">
                                                     <option value="0">For Rent</option>
                                                     <option value="1">For Sale</option>
                                                 </select>
@@ -240,22 +251,17 @@
     <script>
         CKEDITOR.replace('descriptions', {
             filebrowserBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=Properties',
+            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=Agent',
             filebrowserUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Properties'
+            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Agent'
         });
         CKEDITOR.replace('descriptions_en', {
             filebrowserBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=Properties',
+            filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=Agent',
             filebrowserUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Properties'
+            filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Agent'
         });
     </script>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
     <script>
         function loaddistrict() {
             var province = $('#province').val();

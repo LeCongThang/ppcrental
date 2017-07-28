@@ -14,7 +14,7 @@
     <!-- Font Awesome -->
     <link href="{{URL::asset('')}}css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{URL::asset('')}}css/nprogress.css" rel="stylesheet">
+    <link href="{{URL::asset('')}}css/nprogress.min.css" rel="stylesheet">
     <link rel="icon" href="{{URL::asset('favicon.ico')}}">
 {{--<!-- iCheck -->--}}
 {{--<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">--}}
@@ -50,7 +50,7 @@
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                PPC Rental - Designed by <a href="https://hbbsolution.com">HBB Solutions</a>
             </div>
             <div class="clearfix"></div>
         </footer>

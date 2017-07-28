@@ -19,13 +19,17 @@
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
+                        <label> Avatar:</label>
+                        <input class="form-control" type="file" name="avatar" required/>
+                    </div>
+                    <div class="form-group">
                         <input class="form-control" type="text" name="username" placeholder="Username" required/>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="password" name="password" placeholder="Password" required/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" name="password" placeholder="Confirm Password"
+                        <input class="form-control" type="password" name="passwordconfirm" placeholder="Confirm Password"
                                required/>
                     </div>
                     <div class="form-group">

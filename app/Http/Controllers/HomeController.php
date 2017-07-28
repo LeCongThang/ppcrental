@@ -12,6 +12,7 @@ use App\Models\PpcPropertyCategory;
 use App\Models\PpcPropertyFeature;
 use App\Models\PpcProvince;
 use App\Models\PpcSlider;
+use App\Models\PpcUser;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -88,18 +89,22 @@ class HomeController extends Controller
 
     public function Login(Request $request)
     {
-        $a = PpcAgent::where('username', $request->get('username'))->first();
-        if ($a != null) {
+        $a = PpcUser::where('username', $request->get('username'))->first();
+        if ($a != null && $a->user_type == 1) {
             if ($a->status = 1) {
                 if ($a->password == $request->get('password')) {
                     Session::put('agent_id', $a->id);
                     Session::put('agentname', $a->fullname);
-                    Cookie::queue('user_id',str_slug($a->fullname));
-                    return redirect('/');
+                    Cookie::queue('user_id', str_slug($a->fullname));
+                    return redirect()->back();
                 } else {
-
+                    return redirect()->back()->with('fail', 5);
                 }
+            } else {
+                return 'bi khoa';
             }
+        } else {
+            return 'sai';
         }
 
     }
@@ -120,11 +125,36 @@ class HomeController extends Controller
 
     public function Register(Request $request)
     {
-        $data = $request->all();
-        $a = new PpcAgent();
-        $a->insert($data);
-        Session::put('agent_id', $a->id);
-        Session::put('agentname', $a->fullname);
+        $user = new PpcUser();
+        $user->email = $request->get('email');
+        $user->fullname = $request->get('fullname');
+        $user->username = $request->get('username');
+        $user->phone = $request->get('phone');
+        $user->office_phone = $request->get('office_phone');
+        $user->address = $request->get('address');
+        $user->address_en = $request->get('address_en');
+        $user->status = 1;
+        $user->created_at = Carbon::now();
+        $user->updated_at = Carbon::now();
+        $user->password = $request->get('password');
+        $user->remember_token = '';
+        $user->user_type = 1;
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $filename = 'user-' . md5(time()) . '.jpg';
+            $destinationPath = public_path('images/users');
+            $img = Image::make($image->getRealPath());
+            $img->circle(70, 150, 100, function ($draw) {
+                $draw->border(1, '#ffffff');
+            })->save($destinationPath . '/' . $filename);
+            $user->avatar = $filename;
+        } else {
+            $user->avatar = 'user.png';
+        }
+        $user->save();
+        Session::put('agent_id', $user->id);
+        Session::put('agentname', $user->fullname);
+        Cookie::queue('user_id', str_slug($user->fullname));
         return redirect('/');
     }
 
@@ -140,4 +170,31 @@ class HomeController extends Controller
         ]);
 
     }
+
+    public function AgentProfile($id)
+    {
+        if (Session::get('agent_id') == $id) {
+            $u = PpcUser::where('id', $id)->where('user_type', 1)->first();
+            if ($u != null) {
+                return view('profile', ['user' => $u]);
+            }
+
+        }
+    }
+
+    public function SiteMap()
+    {
+        $new = PpcNews::all();
+        $p = PpcProperty::all();
+        $d = PpcDistrict::where('status', 1)->get();
+        $c = PpcPropertyCategory::all();
+        return response()->view('sitemap', [
+            'news' => $new,
+            'p' => $p,
+            'd' => $d,
+            'c' => $c
+        ])->header('Content-Type', 'text/xml');
+    }
+
+
 }

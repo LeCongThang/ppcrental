@@ -18,14 +18,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right col-xs-12 col-md-9 top-menu">
+                {{--<li class="mauxanh hidden-xs">--}}
+                    {{--<span class="glyphicon glyphicon-phone"></span>Hot line: {{$info->hotline}}--}}
+                {{--</li>--}}
+
                 <li class="mauxanh visible-lg-block">
-                    <span class="glyphicon glyphicon-phone"></span> HOT LINE:{{$info->hotline}}
+                    <span class="glyphicon glyphicon-phone"></span> Hot line: {{$info->hotline}}
                 </li>
-                <li class="mauxanh visible-lg-block">
+                <li class="mauxanh hidden-xs">
                     <span class="glyphicon glyphicon-envelope"></span> {{$info->mail}}
                 </li>
-
-                <li class="dropdown">
+                <li class="dropdown md">
                     @if(\Illuminate\Support\Facades\Session::get('agent_id')==null)
                         <span class="glyphicon glyphicon-user"></span> <a class="signin"
                                                                           href="{{URL::asset('')}}sign-in.html">{{trans('home.signin')}}</a>/
@@ -36,12 +39,13 @@
                                 aria-expanded="false"
                                 href="">{{\Illuminate\Support\Facades\Session::get('agentname')}}</a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{URL::asset('')}}/profile-{{\Illuminate\Support\Facades\Session::get('agent_id')}}">Profile</a></li>
-                            <li><a href="{{URL::asset('')}}log-out"> Logout</a></li>
+                            <li>
+                                <a href="{{URL::asset('')}}agent-profile-{{\Illuminate\Support\Facades\Session::get('agent_id')}}">{{trans('home.profile')}}</a></li>
+                            <li><a href="{{URL::asset('')}}log-out"> {{trans('home.logout')}}</a></li>
                         </ul>
                     @endif
                 </li>
-                <li><a href="{{URL::asset('')}}favorite.html"><span class="glyphicon glyphicon-heart"></span>
+                <li class="md"><a href="{{URL::asset('')}}favorite.html"><span class="glyphicon glyphicon-heart"></span>
                         {{trans('home.favorite')}}</a></li>
                 <li>
                     <span><a href="{{URL::asset('')}}language/vi"><img src="{{URL::asset('')}}images/common_icon/vn.gif"/></a> &nbsp;<a href="{{URL::asset('')}}language/en"> <img
@@ -69,7 +73,7 @@
                     <ul class="dropdown-menu">
                         @foreach($district as $d)
                             <li>
-                                <a href="{{URL::asset('')}}search/{{$d->id}}-{{str_slug($d->name_en)}}.html">
+                                <a href="{{URL::asset('')}}search/{{$d->id}}-{{str_slug($d->name)}}.html">
                                     @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                     {{$d->name_en}}
                                 @else

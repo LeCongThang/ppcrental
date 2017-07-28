@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 25 Jul 2017 03:25:08 +0000.
+ * Date: Wed, 26 Jul 2017 06:01:34 +0000.
  */
 
 namespace App\Models;
@@ -26,13 +26,15 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $office_phone
  * @property string $address
  * @property string $address_en
+ * @property bool $user_type
  *
  * @package App\Models
  */
 class PpcUser extends Eloquent
 {
 	protected $casts = [
-		'status' => 'bool'
+		'status' => 'bool',
+		'user_type' => 'bool'
 	];
 
 	protected $hidden = [
@@ -51,6 +53,7 @@ class PpcUser extends Eloquent
 		'phone',
 		'office_phone',
 		'address',
-		'address_en'
+		'address_en',
+		'user_type'
 	];
 }

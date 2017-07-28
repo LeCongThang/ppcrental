@@ -1,4 +1,10 @@
 @extends('layout.userlayout')
+@section('title')@if(\Illuminate\Support\Facades\Session::get('locale')=='en') {{$news->title_en}} - {{$info->title}} @else {{$news->title}} - {{$info->title}} @endif @endsection
+@section('url')news/{{$news->id}}-{{$news->slug}}.html/@endsection
+@section('des'){{$info->title}}, {{$news->title_en}},{{$news->title}}, {{$info->description}}@endsection
+@section('keywords'){{$info->title}}, {{$news->title}},{{$news->title_en}}, {{$info->seokeyword}}@endsection
+@section('author'){{$info->author}}@endsection
+@section('image'){{URL::asset('')}}images/news/{{$news->image}}@endsection
 @section('content')
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
@@ -40,7 +46,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-lg-9 col-sm-12">
                     <div class="panel panel-custom">
                         <div class="panel-body panel-body-custom">
                             <h3>
@@ -57,8 +63,8 @@
                                 {!! $news->content !!}
                             @endif
 
-                            <a class="btn search-form" href="#" onclick="share_fb('{{URL::asset('')}}/news/{{$news->id}}-{{$news->slug_en}}.html');return false;" rel="nofollow"
-                               share_url="{{URL::asset('')}}/news/{{$news->id}}-{{$news->slug_en}}.html" target="_blank">
+                            <a class="btn search-form" href="#" onclick="share_fb('{{URL::asset('')}}news/{{$news->id}}-{{$news->slug_en}}.html');return false;" rel="nofollow"
+                               share_url="{{URL::asset('')}}news/{{$news->id}}-{{$news->slug_en}}.html" target="_blank">
                                 <i class="fa fa-facebook" aria-hidden="true"></i> {{trans('home.share')}}
                             </a>
 

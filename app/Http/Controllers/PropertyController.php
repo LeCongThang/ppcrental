@@ -12,8 +12,11 @@ namespace App\Http\Controllers;
 use App\Models\PpcProperty;
 use App\Models\PpcPropertyFeature;
 use App\Models\PpcUser;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Image;
+
 
 class PropertyController extends Controller
 {
@@ -21,9 +24,18 @@ class PropertyController extends Controller
     public function Detail($id)
     {
         $p = PpcProperty::find($id);
-        $feature = PpcPropertyFeature::whereIn('id', explode(",", $p->feature))->get();
-        $user = PpcUser::find($p->saler_id);
-        return view('propertydetail', ['p' => $p, 'feature' => $feature, 'user' => $user]);
+        if ($p != null) {
+            if ($p->status == 1) {
+                $feature = PpcPropertyFeature::whereIn('id', explode(",", $p->feature))->get();
+                $user = PpcUser::find($p->saler_id);
+                return view('propertydetail', ['p' => $p, 'feature' => $feature, 'user' => $user]);
+            } else {
+                return redirect('/not-found.html');
+            }
+        } else {
+            return redirect('/not-found.html');
+        }
+
     }
 
     public function FeatureProperty($id)
@@ -78,17 +90,18 @@ class PropertyController extends Controller
         $property->slug_en = str_slug($request->get('name_en'));
         $property->price = $request->get('price');
         $property->unit = $request->get('unit');
-        $property->description = $request->get('description');
-        $property->description_en = $request->get('description_en');
+        $property->description = $request->get('descriptions');
+        $property->description_en = $request->get('descriptions_en');
         $property->district = $request->get('district');
         $property->location = $request->get('area');
         $property->area = $request->get('location');
         $property->bedroom = $request->get('bedroom');
         $property->bathroom = $request->get('bathroom');
         $property->parkingplace = $request->get('parkingplace');
-        $property->seotag = $request->get('description');
-        $fullsize = 'propertyfull-' . $property->id . '.jpg';
-        $filename = 'property-' . time() . '.jpg';
+        $property->seotag = $request->get('name');
+        $property->saler_id = Session::get('agent_id');
+        $fullsize = 'propertyfull-' . md5(time()) . '.jpg';
+        $filename = 'property-' . md5(time()) . '.jpg';
         if ($request->hasFile('image_overall')) {
             $image = $request->file('image_overall');
 
@@ -103,6 +116,7 @@ class PropertyController extends Controller
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $fullsize);
             $property->image_overall = $filename;
+            $property->thumb = $fullsize;
         }
 
         $property->status = 0;

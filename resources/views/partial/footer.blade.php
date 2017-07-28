@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 wow fadeInDown" data-wow-duration="1.5s">
+            <div class="col-sm-4 wow fadeInDown" data-wow-duration="1.5s">
                 <img src="{{URL::asset('')}}images/common_icon/footer-logo.png">
                 <div class="padding30"></div>
                 <ul class="list-inline">
@@ -10,7 +10,7 @@
                     <li><a href="{{$info->facebook}}" target="_blank"><img src="{{URL::asset('')}}images/common_icon/social3.png"></a></li>
                 </ul>
             </div>
-            <div class="col-lg-4 wow fadeInRight" data-wow-duration="1.5s">
+            <div class="col-sm-4 wow fadeInRight" data-wow-duration="1.5s">
                 <h4><strong style="color: #342315;">Perfect Property Company, VietNam</strong></h4>
 
                 <hr style="color: #342315; border-bottom: 3px solid #342315"/>
@@ -20,7 +20,7 @@
                     {!! $info->vietnam_address !!}
                 @endif
             </div>
-            <div class="col-lg-4 wow fadeInRight" data-wow-duration="1.5s">
+            <div class="col-sm-4 wow fadeInRight" data-wow-duration="1.5s">
                 <h4><strong style="color: #342315;">Perfect Property Company, USA</strong></h4>
 
                 <hr style="color: #342315; border-bottom: 3px solid #342315"/>

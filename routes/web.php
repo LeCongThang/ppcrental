@@ -12,7 +12,7 @@
 */
 Route::group(['middleware' => 'localization', 'prefix' => Session::get('locale')], function () {
     Route::get('/', 'HomeController@Home');
-    Route::get('language/{locale}','LangController@postLang');
+    Route::get('language/{locale}', 'LangController@postLang');
     Route::get('/add-favorite-{id}', 'PropertyController@AddFav');
     Route::get('/favorite.html', 'PropertyController@Favorite');
     Route::get('/about-ppcrental.html', 'HomeController@About');
@@ -32,9 +32,11 @@ Route::group(['middleware' => 'localization', 'prefix' => Session::get('locale')
     Route::get('/search/{id}-{slug}.html', 'PropertyController@DistrictProperty');
     Route::get('/add-favorite-{id}.html', 'PropertyController@DistrictProperty');
     Route::get('/profile/{id}-{slug}.html', 'PropertyController@ViewProfile');
-    Route::post('/send-message','HomeController@SendMessage');
-    Route::post('/post-property','PropertyController@Post');
+    Route::post('/send-message', 'HomeController@SendMessage');
+    Route::post('/post-property', 'PropertyController@Post');
+    Route::get('/agent-profile-{id}', 'HomeController@AgentProfile');
 });
+Route::get('/sitemap.xml', 'HomeController@SiteMap');
 //================== Admin routes ================================
 Route::get('/admin', 'Admin\PropertyController@Index')->middleware('not.login');
 Route::get('/admin/log-in', 'Admin\AccountController@getLogin');
@@ -68,6 +70,8 @@ Route::get('/admin/about-management', 'Admin\AboutController@Index')->middleware
 Route::post('/admin/about-management', 'Admin\AboutController@Update')->middleware('not.login');
 //contact management
 Route::get('/admin/contact-management', 'Admin\ContactsController@Index')->middleware('not.login');
+Route::get('/admin/seen-contact-{id}', 'Admin\ContactsController@Seen')->middleware('not.login');
+Route::get('/admin/delete-contact-{id}', 'Admin\ContactsController@Delete')->middleware('not.login');
 //slider management
 Route::get('/admin/slider-management', 'Admin\SliderController@Index')->middleware('not.login');
 Route::get('/admin/new-slider', 'Admin\SliderController@NewSlider')->middleware('not.login');
@@ -120,3 +124,18 @@ Route::get('admin/district-in-homepage', 'Admin\AdminController@DistrictInHomepa
 Route::get('admin/update-district-home-{id}', 'Admin\AdminController@EditPosition')->middleware('not.login');
 Route::post('admin/edit-position-{id}', 'Admin\AdminController@UpdatePosition')->middleware('not.login');
 Route::get('admin/district-detail-{id}', 'Admin\AdminController@DistrictDetail')->middleware('not.login');
+
+//search in homepage
+Route::get('admin/search-management', 'Admin\SearchController@Index')->middleware('not.login');
+Route::get('admin/add-minbudget', 'Admin\SearchController@Addmin')->middleware('not.login');
+Route::get('admin/add-maxbudget', 'Admin\SearchController@AddMax')->middleware('not.login');
+Route::get('admin/add-bedroom', 'Admin\SearchController@AddBed')->middleware('not.login');
+Route::post('admin/update-search', 'Admin\SearchController@Update')->middleware('not.login');
+Route::get('admin/delete-search-{id}', 'Admin\SearchController@Delete')->middleware('not.login');
+Route::post('admin/remove-search-{id}', 'Admin\SearchController@Remove')->middleware('not.login');
+//place management
+Route::get('admin/place-management', 'Admin\PlaceController@Index')->middleware('not.login');
+Route::get('admin/new-street', 'Admin\PlaceController@Create')->middleware('not.login');
+Route::post('admin/stored-street', 'Admin\PlaceController@Index')->middleware('not.login');
+Route::get('admin/edit-street-{id}', 'Admin\PlaceController@Edit')->middleware('not.login');
+Route::post('admin/update-street-{id}', 'Admin\PlaceController@Update')->middleware('not.login');

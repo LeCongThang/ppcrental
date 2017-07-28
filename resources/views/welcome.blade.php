@@ -1,34 +1,25 @@
 @extends('layout.userlayout')
+@section('title')
+    @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
+        HOME PAGE -
+    @else
+        TRANG CHỦ -
+    @endif
+    {{$info->title}}
+@endsection
+@section('des')
+    {{$info->title}}, {{$info->description}}
+@endsection
+@section('keywords')
+    {{$info->title}},  {{$info->seokeyword}}
+@endsection
+@section('author')
+    {{$info->author}}
+@endsection
+@section('image')https://ppcrentals.com/images/common_icon/logo.png
+@endsection
 @section('content')
-    {{--<a name="about"></a>--}}
-    {{--<div class="intro-header">--}}
 
-
-    {{--<div class="intro-message">--}}
-    {{--<!--<h1>Landing Page</h1>-->--}}
-    {{--<!--<h3>A Template by Start Bootstrap</h3>-->--}}
-    {{--<!--<hr class="intro-divider">-->--}}
-    {{--<!--<ul class="list-inline intro-social-buttons">-->--}}
-    {{--<!--<li>-->--}}
-    {{--<!--<a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>-->--}}
-    {{--<!--</li>-->--}}
-    {{--<!--<li>-->--}}
-    {{--<!--<a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>-->--}}
-    {{--<!--</li>-->--}}
-    {{--<!--<li>-->--}}
-    {{--<!--<a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>-->--}}
-    {{--<!--</li>-->--}}
-    {{--<!--</ul>-->--}}
-    {{--<section class="regular1 slider">--}}
-    {{--<img src="{{URL::asset('')}}images/homepage/banner.jpg" class="img-responsive"/>--}}
-    {{--</section>--}}
-    {{--</div>--}}
-
-
-    {{--<!-- /.container -->--}}
-
-    {{--</div>--}}
-    <!-- /.intro-header -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
 
@@ -76,7 +67,7 @@
             <div class="row">
                 @foreach($district as $item)
                     @if($loop->iteration==1)
-                        <div class="col-lg-8 grid">
+                        <div class="col-sm-8 grid">
                             <figure class="effect-sarah district">
                                 <img src="{{URL::asset('')}}images/homepage/{{$item->image}}"
                                      class="district img-responsive"/>
@@ -98,7 +89,7 @@
 
                         </div>
                     @elseif($loop->iteration==2)
-                        <div class="col-lg-4 grid">
+                        <div class="col-sm-4 grid">
 
                             <figure class="effect-chico district" style="margin-bottom: 30px;">
                                 <img src="{{URL::asset('')}}images/homepage/{{$item->image}}"
@@ -110,7 +101,7 @@
                                     <p>@if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                             {{str_limit($item->description_en,40)}}
                                         @else
-                                            {{str_limit($item->description_en,40)}}
+                                            {{str_limit($item->description,40)}}
                                         @endif
                                     </p>
                                     <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View
@@ -129,7 +120,7 @@
                                         <p>@if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                                 {{str_limit($item->description_en,40)}}
                                             @else
-                                                {{str_limit($item->description_en,40)}}
+                                                {{str_limit($item->description,40)}}
                                             @endif</p>
                                         <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View
                                             more</a>
@@ -138,7 +129,7 @@
 
                         </div>
                     @elseif($loop->iteration==4)
-                        <div class="col-lg-4 padding30 grid">
+                        <div class="col-sm-4 padding30 grid">
                             <figure class="effect-roxy district">
                                 <img src="{{URL::asset('')}}images/homepage/{{$item->image}}"
                                      class="district img-responsive"/>
@@ -149,7 +140,7 @@
                                     <p>@if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                             {{str_limit($item->description_en,40)}}
                                         @else
-                                            {{str_limit($item->description_en,40)}}
+                                            {{str_limit($item->description,40)}}
                                         @endif</p>
                                     <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View
                                         more</a>
@@ -157,7 +148,7 @@
                             </figure>
                         </div>
                     @elseif($loop->iteration==5)
-                        <div class="col-lg-4 padding30 grid">
+                        <div class="col-sm-4 padding30 grid">
                             <figure class="effect-roxy district">
                                 <img src="{{URL::asset('')}}images/homepage/{{$item->image}}"
                                      class="district img-responsive"/>
@@ -168,7 +159,7 @@
                                     <p>@if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                             {{str_limit($item->description_en,40)}}
                                         @else
-                                            {{str_limit($item->description_en,40)}}
+                                            {{str_limit($item->description,40)}}
                                         @endif</p>
                                     <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View
                                         more</a>
@@ -176,7 +167,7 @@
                             </figure>
                         </div>
                     @elseif($loop->iteration==6)
-                        <div class="col-lg-4 padding30 grid">
+                        <div class="col-sm-4 padding30 grid">
                             <figure class="effect-roxy district">
                                 <img src="{{URL::asset('')}}images/homepage/{{$item->image}}"
                                      class="district img-responsive"/>
@@ -187,7 +178,7 @@
                                     <p>@if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                             {{str_limit($item->description_en,40)}}
                                         @else
-                                            {{str_limit($item->description_en,40)}}
+                                            {{str_limit($item->description,40)}}
                                         @endif</p>
                                     <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View
                                         more</a>
@@ -195,7 +186,7 @@
                             </figure>
                         </div>
                     @elseif($loop->iteration==7)
-                        <div class="col-lg-6 grid">
+                        <div class="col-sm-6 grid">
                             <figure class="effect-ruby district">
                                 <img src="{{URL::asset('')}}images/homepage/{{$item->image}}"
                                      class="district img-responsive"/>
@@ -206,7 +197,7 @@
                                     <p>@if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                             {{str_limit($item->description_en,40)}}
                                         @else
-                                            {{str_limit($item->description_en,40)}}
+                                            {{str_limit($item->description,40)}}
                                         @endif</p>
                                     <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View
                                         more</a>
@@ -214,7 +205,7 @@
                             </figure>
                         </div>
                     @elseif($loop->iteration==8)
-                        <div class="col-lg-6 grid">
+                        <div class="col-sm-6 grid">
                             <figure class="effect-ruby district">
                                 <img src="{{URL::asset('')}}images/homepage/{{$item->image}}"
                                      class="district img-responsive"/>
@@ -225,7 +216,7 @@
                                     <p>@if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                             {{str_limit($item->description_en,40)}}
                                         @else
-                                            {{str_limit($item->description_en,40)}}
+                                            {{str_limit($item->description,40)}}
                                         @endif</p>
                                     <a href="{{URL::asset('')}}search/{{$item->id}}-{{str_slug($item->name_en)}}.html">View
                                         more</a>
@@ -263,7 +254,7 @@
                                     <div class="col-lg-3 grid">
                                         {{--<a href="{{URL::asset('')}}property/{{$p->id}}-{{$p->slug}}.html">--}}
                                         <figure class="effect-zoe" style="margin-bottom: 20px;">
-                                            <img  src="{{URL::asset('')}}images/project/{{$p->image_overall}}"
+                                            <img src="{{URL::asset('')}}images/project/{{$p->image_overall}}"
                                                  class="district img-responsive pro">
                                             <figcaption>
                                                 <p class="icon-links">
@@ -279,7 +270,7 @@
                                         </figure>
                                         {{--</a>--}}
                                         <h4>
-                                            <a class="mauxanh" href="{{URL::asset('')}}property/{{$p->id}}-{{$p->slug}}.html">
+                                            <a href="{{URL::asset('')}}property/{{$p->id}}-{{$p->slug}}.html">
                                                 @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                                     {{str_limit($p->name_en,30)}}
                                                 @else
@@ -321,7 +312,7 @@
                     <div class="padding30"></div>
                 </div>
                 @foreach($news as $n)
-                    <div class="col-lg-4 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s">
+                    <div class="col-sm-4 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s">
                         <div class="district">
 
                             <a style="border-bottom: 1px solid"
@@ -329,22 +320,22 @@
                                title="{{$item->title}}">
                                 <img src="{{URL::asset('')}}images/news/{{$n->image}}" class="img-responsive news"></a>
                             <div class="content-tintuc" style="background-color: #ffffff;padding: 10px;">
-                                <h3 style="font-size:20px;"><a class="mauxanh"
+                                <h3 style="font-size:20px;"><a
                                             href="{{URL::asset('')}}news/{{$n->id}}-{{$n->slug}}.html">
                                         @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                             {{str_limit($n->title_en,35)}}
                                         @else
-                                            {{str_limit($n->title_en,35)}}
+                                            {{str_limit($n->title,35)}}
                                         @endif
-                                        </a>
+                                    </a>
                                 </h3>
                                 <p style="color: black;font-weight: normal">
                                     @if(\Illuminate\Support\Facades\Session::get('locale')=='en')
                                         {!! str_limit(strip_tags($n->content_en),150) !!}
                                     @else
-                                        {!! str_limit(strip_tags($n->content_en),150) !!}
+                                        {!! str_limit(strip_tags($n->content),150) !!}
                                     @endif
-                                    </p>
+                                </p>
                             </div>
 
 
@@ -371,13 +362,35 @@
     </script>
     <script>
         var w = screen.width;
-        if (w < 768) {
+        if (w < 525) {
             //$('.content-menu').removeClass('container');
             $(".regular").slick({
                 dots: true,
                 infinite: true,
                 slidesToShow: 1,
                 slidesToScroll: 1,
+                arrows: false,
+                autoplay: true
+
+            });
+        }
+        else if(w>=525 && w<768){
+            $(".regular").slick({
+                dots: true,
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                arrows: false,
+                autoplay: true
+
+            });
+        }
+        else if(w>=768 && w<995){
+            $(".regular").slick({
+                dots: true,
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
                 arrows: false,
                 autoplay: true
 

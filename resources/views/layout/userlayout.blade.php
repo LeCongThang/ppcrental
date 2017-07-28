@@ -6,22 +6,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>PPC RENTAL</title>
+    <meta name="description" content="@yield('des')">
+    <meta name="keywords" content="@yield('keywords')"/>
+    <meta name="author" content="@yield('author')">
+    <meta property="og:url"           content="http://ppcrentals.com/@yield('url')" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="@yield('title')" />
+    <meta property="og:description"   content="@yield('des')" />
+    <meta property="og:image"         content="@yield('image')" />
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{URL::asset('')}}css/bootstrap.css" rel="stylesheet">
-
+    <link href="{{URL::asset('')}}css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{URL::asset('')}}css/landing-page.css" rel="stylesheet">
-
-    <link href="{{URL::asset('')}}css/set1.css" rel="stylesheet">
-    <link href="{{URL::asset('')}}css/slick-theme.css" rel="stylesheet">
-    <link href="{{URL::asset('')}}css/slick.css" rel="stylesheet">
+    <link href="{{URL::asset('')}}css/landing-page.min.css" rel="stylesheet">
+    <link href="{{URL::asset('')}}css/set1.min.css" rel="stylesheet">
+    <link href="{{URL::asset('')}}css/slick-theme.min.css" rel="stylesheet">
+    <link href="{{URL::asset('')}}css/slick.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{URL::asset('')}}css/animate.min.css">
-    <link rel="stylesheet" href="{{URL::asset('')}}css/full-slider.css">
+    <link rel="stylesheet" href="{{URL::asset('')}}css/full-slider.min.css">
     <script src="{{URL::asset('')}}js/wow.min.js"></script>
     <script>
         new WOW().init();
@@ -44,7 +47,7 @@
 </head>
 
 <body class="body-content">
-
+<h1 style="position:absolute;left:-100%;">Công ty bất động sản Perfect property việt nam. PPC Rental, PPC, PPCRENTAL, ppc, ppc rentals</h1>
 <!-- Navigation -->
 @include('partial.header')
 
@@ -62,7 +65,7 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{URL::asset('')}}js/bootstrap.min.js"></script>
 <script src="{{URL::asset('')}}js/slick.min.js" rel="stylesheet"></script>
-@yield('scripts')
+
 <script>
     $('.signin').click(function (e) {
         var a_href = $(this).attr('href'); /* Lấy giá trị của thuộc tính href */
@@ -101,6 +104,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+@yield('scripts')
 </body>
 
 </html>

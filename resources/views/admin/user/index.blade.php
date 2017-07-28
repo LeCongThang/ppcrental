@@ -20,7 +20,7 @@
                     </div>
                 @endif
                 <div class="col-md-12">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered tblusers">
                         <thead>
                         <tr>
                             <th>No.</th>
@@ -29,6 +29,7 @@
                             <th>Full name</th>
                             <th>Create at</th>
                             <th>Phone</th>
+                            <th>Role</th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -43,6 +44,12 @@
                                 <td>{{$item->fullname}}</td>
                                 <td>{{$item->created_at}}</td>
                                 <td>{{$item->phone}}</td>
+                                <td>@if($item->user_type==0)
+                                        <label class="label label-info">Agent</label>
+                                    @else
+                                        <label class="label label-success">Staff</label>
+                                    @endif
+                                </td>
                                 <td>@if($item->status==0)
                                         <label class="text-danger"><i class="fa fa-circle-o"></i></label>
                                     @else
@@ -95,5 +102,9 @@
                 }
             });
         })
+    </script>
+    <script src="{{URL::asset('')}}js/jquery.dataTables.min.js"></script>
+    <script>
+        $('.tblusers').DataTable();
     </script>
 @endsection

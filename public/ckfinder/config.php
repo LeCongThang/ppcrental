@@ -66,12 +66,12 @@ if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/image
     $config['About']['maxHeight'] = 700;
 }
 if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/news/'){
-    $config['News']['maxWidth'] = 600;
-    $config['News']['maxHeight'] = 600;
+    $config['News']['maxWidth'] = 500;
+    $config['News']['maxHeight'] = 500;
 }
 if(isset($_GET['currentFolder']) && urldecode($_GET['currentFolder']) == '/images/project/'){
-    $config['Properties']['maxWidth'] = 600;
-    $config['Properties']['maxHeight'] = 600;
+    $config['Properties']['maxWidth'] = 500;
+    $config['Properties']['maxHeight'] = 500;
 }
 /*=================================== Backends ========================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_backends
@@ -134,7 +134,7 @@ $config['resourceTypes'][] = array(
 );
 $config['resourceTypes'][] = array(
     'name'              => 'Agent',
-    'directory'         => 'images',
+    'directory'         => 'images/agents/'.$_COOKIE['user_id'],
     'maxSize'           => 0,
     'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
     'deniedExtensions'  => '',

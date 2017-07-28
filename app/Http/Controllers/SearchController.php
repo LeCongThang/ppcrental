@@ -25,7 +25,7 @@ class SearchController extends Controller
             ->whereBetween('price',array($request->get('min'),$request->get('max')))
             ->where('name','=',$request->get('keyword'))
             ->orderBy('updated_at','desc')
-            ->get();
+            ->paginate(10);
 
             return view('property', ['items' => $items]);
 

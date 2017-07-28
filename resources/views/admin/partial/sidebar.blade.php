@@ -9,7 +9,7 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="{{URL::asset('')}}images/users/default.png" alt="..." class="img-circle profile_img">
+                <img src="{{URL::asset('')}}images/users/{{Session::get('avatar')}}" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Hi,{{Session::get('username')}}</span>

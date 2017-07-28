@@ -27,11 +27,11 @@
                         <input class="form-control" type="password" name="password" placeholder="Password" required/>
                     </div>
                     <div class="form-group" style="height: 40px">
-                        <div class="col-lg-9">
+                        <div class="col-sm-8 col-xs-8">
                             <a href="">{{trans('home.forgot')}}</a><br>
                             <a href="">{{trans('home.donthave')}}</a>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-sm-2 col-xs-4">
                             <input type="submit" value="{{trans('home.signin')}}" class="btn search-form"/>
                         </div>
                     </div>

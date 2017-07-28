@@ -49,5 +49,13 @@ return [
     'name'=>'Tên',
     'forgot'=>'Quên mật khẩu?',
     'donthave'=>'Chưa có tài khoản?',
+    'info'=>'Thông tin',
+    'profile'=>'Thông tin cá nhân',
+    'logout'=>'Đăng xuất',
+    'username'=>'Tên đăng nhập',
+    'fullname'=>'Họ & tên',
+    'newpassword'=>'Mật khẩu',
+    'cancel'=>'Hủy',
+    'save'=>'Lưu',
 
 ];

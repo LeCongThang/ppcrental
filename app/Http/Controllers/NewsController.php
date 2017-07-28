@@ -13,8 +13,13 @@ use App\Models\PpcNews;
 
 class NewsController extends Controller
 {
-    public function Detail($id){
+    public function Detail($id)
+    {
         $news = PpcNews::find($id);
-        return view('newdetail',['news'=>$news]);
+        if ($news != null) {
+            return view('newdetail', ['news' => $news]);
+        } else
+            return redirect('/not-found.html');
+
     }
 }

@@ -21,7 +21,7 @@ class AccountController extends Controller{
         $password=$request->get('password');
         $user = PpcUser::where('username', $username)->first();
         //dd($user);
-        if($user!=null){
+        if($user!=null &&$user->user_type==0){
             $pass = $user->password;
             if($password!=$pass){
 
@@ -31,6 +31,7 @@ class AccountController extends Controller{
                 if($user->status==1){
                 Session::put('username',$user->fullname);
                 Session::put('user_id',$user->id);
+                Session::put('avatar',$user->avatar);
                 return redirect('/admin');
                 }
                 else{

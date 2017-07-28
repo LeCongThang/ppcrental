@@ -20,7 +20,7 @@
                     </div>
                 @endif
                 <div class="col-md-12">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered tblnews">
                         <thead>
                         <tr>
                             <th>No.</th>
@@ -90,5 +90,9 @@
                 }
             });
         })
+    </script>
+    <script src="{{URL::asset('')}}js/jquery.dataTables.min.js"></script>
+    <script>
+        $('.tblnews').DataTable();
     </script>
 @endsection

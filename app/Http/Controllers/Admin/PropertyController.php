@@ -72,7 +72,7 @@ class PropertyController extends Controller
         $property->slug_en = str_slug($request->get('name_en'));
         $property->price = $request->get('price');
         $property->saler_id = Session::get('user_id');
-        $property->unit = Session::get('unit');
+        $property->unit = $request->get('unit');
         $property->saler_id = Session::get('user_id');
         $property->description = $request->get('description');
         $property->description_en = $request->get('description_en');
@@ -83,8 +83,8 @@ class PropertyController extends Controller
         $property->bathroom = $request->get('bathroom');
         $property->parkingplace = $request->get('parkingplace');
         $property->seotag = $request->get('seotag');
-        $fullsize = 'propertyfull-' . $property->id . '.jpg';
-        $filename = 'property-' . time() . '.jpg';
+        $fullsize = 'propertyfull-' . md5(time()) . '.jpg';
+        $filename = 'property-' . md5(time()) . '.jpg';
         if ($request->hasFile('image_overall')) {
             $image = $request->file('image_overall');
 
@@ -98,7 +98,9 @@ class PropertyController extends Controller
                 ->resize(750, 500, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $fullsize);
+
             $property->image_overall = $filename;
+            $property->thumb = $fullsize;
         }
         if ($request->get('status') != null) {
             $property->status = $request->get('status');
@@ -139,8 +141,8 @@ class PropertyController extends Controller
         $property->bathroom = $request->get('bathroom');
         $property->parkingplace = $request->get('parkingplace');
         $property->seotag = $request->get('seotag');
-        $fullsize = 'propertyfull-' . $property->id . '.jpg';
-        $filename = 'property-' . time() . '.jpg';
+        $fullsize = 'propertyfull-' . md5(time()) . '.jpg';
+        $filename = 'property-' . md5(time()) . '.jpg';
         if ($request->hasFile('image_overall')) {
             $image = $request->file('image_overall');
 
@@ -157,16 +159,17 @@ class PropertyController extends Controller
             if (file_exists('images/project/' . $property->image_overall)) {
                 unlink('images/project/' . $property->image_overall);
             }
-            if (file_exists('images/project/propertyfull-' . $property->id)) {
-                unlink('images/project/propertyfull-' . $property->id);
+            if (file_exists('images/project/' . $property->thumb)){
+                unlink('images/project/' . $property->thumb);
             }
             $property->image_overall = $filename;
+            $property->thumb = $fullsize;
         }
         if ($request->get('status') != null) {
             $property->status = $request->get('status');
         } else
             $property->status = 0;
-        $property->feature=null;
+        $property->feature = null;
         foreach ($feature as $i) {
             if ($request->get('feature' . $i->id) != null) {
                 $property->feature .= $i->id . ',';
